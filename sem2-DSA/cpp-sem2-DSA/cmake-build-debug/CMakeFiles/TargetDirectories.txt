@@ -1,0 +1,3 @@
+C:/Users/almax/Documents/Github/sem2-DSA/cpp-sem2-DSA/cmake-build-debug/CMakeFiles/cpp_sem2_DSA.dir
+C:/Users/almax/Documents/Github/sem2-DSA/cpp-sem2-DSA/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/almax/Documents/Github/sem2-DSA/cpp-sem2-DSA/cmake-build-debug/CMakeFiles/rebuild_cache.dir
