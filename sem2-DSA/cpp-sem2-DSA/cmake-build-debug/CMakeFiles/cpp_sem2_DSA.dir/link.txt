@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2023.3.2\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\cpp_sem2_DSA.dir/objects.a
+C:\PROGRA~1\JETBRA~1\CLION2~2.2\bin\mingw\bin\ar.exe qc CMakeFiles\cpp_sem2_DSA.dir/objects.a @CMakeFiles\cpp_sem2_DSA.dir\objects1.rsp
+C:\PROGRA~1\JETBRA~1\CLION2~2.2\bin\mingw\bin\G__~1.EXE -g -Wl,--whole-archive CMakeFiles\cpp_sem2_DSA.dir/objects.a -Wl,--no-whole-archive -o cpp_sem2_DSA.exe -Wl,--out-implib,libcpp_sem2_DSA.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cpp_sem2_DSA.dir\linkLibs.rsp

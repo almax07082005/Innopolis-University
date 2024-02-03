@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2023.3.2\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\C_sem1_ITP.dir/objects.a
+C:\PROGRA~1\JETBRA~1\CLION2~2.2\bin\mingw\bin\ar.exe qc CMakeFiles\C_sem1_ITP.dir/objects.a @CMakeFiles\C_sem1_ITP.dir\objects1.rsp
+C:\PROGRA~1\JETBRA~1\CLION2~2.2\bin\mingw\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\C_sem1_ITP.dir/objects.a -Wl,--no-whole-archive -o C_sem1_ITP.exe -Wl,--out-implib,libC_sem1_ITP.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\C_sem1_ITP.dir\linkLibs.rsp
