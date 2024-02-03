@@ -1,0 +1,3 @@
+C:/Users/almax/Documents/Github/C-sem1-ITP/cmake-build-debug/CMakeFiles/C_sem1_ITP.dir
+C:/Users/almax/Documents/Github/C-sem1-ITP/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/almax/Documents/Github/C-sem1-ITP/cmake-build-debug/CMakeFiles/rebuild_cache.dir
