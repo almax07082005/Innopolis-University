@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CheckStyle-IDEA" serialisationVersion="2">
+    <checkstyleVersion>10.12.4</checkstyleVersion>
+    <scanScope>JavaOnly</scanScope>
+    <copyLibs>true</copyLibs>
+    <option name="thirdPartyClasspath" />
+    <option name="activeLocationIds" />
+    <option name="locations">
+      <list>
+        <ConfigurationLocation id="bundled-sun-checks" type="BUNDLED" scope="All" description="Sun Checks">(bundled)</ConfigurationLocation>
+        <ConfigurationLocation id="bundled-google-checks" type="BUNDLED" scope="All" description="Google Checks">(bundled)</ConfigurationLocation>
+        <ConfigurationLocation id="4fc3eda3-9c1b-403c-aa28-a6de7b3e65aa" type="LOCAL_FILE" scope="All" description="Java-sem1-ITP\Assign3">
+          $PROJECT_DIR$/src/Assign3/ITP_checks_V2.xml
+          <option name="properties">
+            <map>
+              <entry key="org.checkstyle.sun.suppressionfilter.config" value="" />
+              <entry key="org.checkstyle.sun.suppressionxpathfilter.config" value="" />
+            </map>
+          </option>
+        </ConfigurationLocation>
+      </list>
+    </option>
+  </component>
+</project>
