@@ -1,0 +1,3 @@
+C:/Users/almax/Desktop/Cpp-AlgorithmsTraining/cmake-build-debug/CMakeFiles/Cpp_AlgorithmsTraining.dir
+C:/Users/almax/Desktop/Cpp-AlgorithmsTraining/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/almax/Desktop/Cpp-AlgorithmsTraining/cmake-build-debug/CMakeFiles/rebuild_cache.dir
