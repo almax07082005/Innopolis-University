@@ -1,5 +1,7 @@
 # ninja log v5
-1	842	7286880533458242	CMakeFiles/cpp_sem2_SSAD.dir/main.cpp.obj	9a3d2c0425bff45f
-845	948	7286880534469451	cpp_sem2_SSAD.exe	748640ff3fda16f
-5	755	7286887919072324	CMakeFiles/cpp_sem2_SSAD.dir/main.cpp.obj	42edcd6c5245773f
-755	865	7286887920112183	cpp_sem2_SSAD.exe	748640ff3fda16f
+1	753	7293687797781931	CMakeFiles/cpp_sem2_SSAD.dir/main.cpp.obj	42edcd6c5245773f
+993	1107	7293699134510744	cpp_sem2_SSAD.exe	c1375581c3325ce5
+5	798	7293448136953755	CMakeFiles/cpp_sem2_SSAD.dir/Week3/A.cpp.obj	12bf1c6589fbc37f
+8	993	7293699133417156	CMakeFiles/cpp_sem2_SSAD.dir/Week3/B.cpp.obj	b5449abd187f64c5
+0	666	7293699424684698	CMakeFiles/cpp_sem2_SSAD.dir/main.cpp.obj	42edcd6c5245773f
+674	772	7293699425694331	cpp_sem2_SSAD.exe	748640ff3fda16f
