@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.drawio": "xml",
+        "*.java": "java",
+        "*.tcc": "cpp",
+        "*.ahk": "ahk",
+        "*.asm": "riscv",
+        "*.latex": "latex",
+        "iostream": "cpp"
+    }
+}
