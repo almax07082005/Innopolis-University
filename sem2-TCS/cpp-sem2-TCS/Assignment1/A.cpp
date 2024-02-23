@@ -51,6 +51,10 @@ bool filterLanguage3(const std::string& string, const std::vector<char>& symbolL
 
 void showResult(auto filterLanguage, int languageNumber, const std::vector<char>& symbolList, const std::vector<int>& wordAmounts) {
     int symbolCount = int(symbolList.size());
+    if (symbolCount == 1 && languageNumber == 3) {
+        std::cout << '_';
+        return;
+    }
 
     std::cout << (languageNumber == 1 ? "_ " : "");
     for (int wordLength = 1, wordIndex = 0; wordIndex < wordAmounts[languageNumber - 1] - (languageNumber == 1 ? 1 : 0); wordLength++) {
@@ -71,12 +75,13 @@ void showResult(auto filterLanguage, int languageNumber, const std::vector<char>
 int main() {
     int symbolAmount;
     std::cin >> symbolAmount;
+    auto readOne = []<typename T>(T& elem){ std::cin >> elem; };
 
     std::vector<char> symbolList(symbolAmount);
-    std::for_each(symbolList.begin(), symbolList.end(), [](char& elem){  std::cin >> elem; });
+    std::for_each(symbolList.begin(), symbolList.end(), readOne);
 
     std::vector<int> wordAmounts(languageCount);
-    std::for_each(wordAmounts.begin(), wordAmounts.end(), [](int& elem){ std::cin >> elem; });
+    std::for_each(wordAmounts.begin(), wordAmounts.end(), readOne);
 
     showResult(filterLanguage1, 1, symbolList, wordAmounts);
     showResult(filterLanguage2, 2, symbolList, wordAmounts);
