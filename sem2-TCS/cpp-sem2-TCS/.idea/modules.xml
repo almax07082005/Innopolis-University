@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/cpp-sem2-TCS.iml" filepath="$PROJECT_DIR$/.idea/cpp-sem2-TCS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Cpp-sem2-TCS.iml" filepath="$PROJECT_DIR$/.idea/Cpp-sem2-TCS.iml" />
     </modules>
   </component>
 </project>

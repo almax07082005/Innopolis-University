@@ -6,7 +6,7 @@
 # It is included in the main 'build.ninja'.
 
 # =============================================================================
-# Project: cpp_sem2_TCS
+# Project: Cpp_sem2_TCS
 # Configurations: Debug
 # =============================================================================
 # =============================================================================
@@ -14,7 +14,7 @@
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__cpp_sem2_TCS_unscanned_Debug
+rule CXX_COMPILER__Cpp_sem2_TCS_unscanned_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ${LAUNCHER}${CODE_CHECK}C:\PROGRA~1\JETBRA~1\CLION2~2.2\bin\mingw\bin\G__~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -24,7 +24,7 @@ rule CXX_COMPILER__cpp_sem2_TCS_unscanned_Debug
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__cpp_sem2_TCS_Debug
+rule CXX_EXECUTABLE_LINKER__Cpp_sem2_TCS_Debug
   command = cmd.exe /C "$PRE_LINK && C:\PROGRA~1\JETBRA~1\CLION2~2.2\bin\mingw\bin\G__~1.EXE $FLAGS $LINK_FLAGS $in -o $TARGET_FILE -Wl,--out-implib,$TARGET_IMPLIB -Wl,--major-image-version,0,--minor-image-version,0 $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
@@ -42,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "C:\Program Files\JetBrains\CLion 2023.3.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\almax\Documents\Github\Innopolis-University\sem2-TCS\cpp-sem2-TCS -BC:\Users\almax\Documents\Github\Innopolis-University\sem2-TCS\cpp-sem2-TCS\cmake-build-debug
+  command = "C:\Program Files\JetBrains\CLion 2023.3.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\almax\Documents\Github\Innopolis-University\sem2-TCS\Cpp-sem2-TCS -BC:\Users\almax\Documents\Github\Innopolis-University\sem2-TCS\Cpp-sem2-TCS\cmake-build-debug
   description = Re-running CMake...
   generator = 1
 

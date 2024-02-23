@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/cpp-sem2-TCS
+# Install script for directory: C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/Cpp-sem2-TCS
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/cpp_sem2_TCS")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Cpp_sem2_TCS")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/cpp-sem2-TCS/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/Cpp-sem2-TCS/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
