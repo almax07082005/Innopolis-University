@@ -1,6 +1,7 @@
 # ninja log v5
-0	645	7303898866716704	CMakeFiles/cpp_sem2_TCS.dir/main.cpp.obj	465f749fb8ef5942
-1712	1864	7303900819417798	cpp_sem2_TCS.exe	f49c823ba7eef44
-6	1712	7303900817932339	CMakeFiles/cpp_sem2_TCS.dir/Assignment1/A.cpp.obj	4362543f251f2480
 0	780	7303902400048235	CMakeFiles/cpp_sem2_TCS.dir/main.cpp.obj	465f749fb8ef5942
-783	887	7303902401084399	cpp_sem2_TCS.exe	860d2e22219facaa
+968	1092	7303989360838576	cpp_sem2_TCS.exe	e2433f50ab3c5c75
+2	806	7303937519725738	CMakeFiles/cpp_sem2_TCS.dir/Assignment1/A.cpp.obj	4362543f251f2480
+3	968	7303989359635135	CMakeFiles/cpp_sem2_TCS.dir/Assignment1/B.cpp.obj	c4ba29cd5892f04c
+0	452	7303990100380977	CMakeFiles/cpp_sem2_TCS.dir/main.cpp.obj	465f749fb8ef5942
+459	531	7303990101115313	cpp_sem2_TCS.exe	860d2e22219facaa
