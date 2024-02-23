@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/Cpp-sem2-TCS/cmake-build-debug"
+			"value" : "c:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/cpp-sem2-TCS/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -575,7 +575,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/Cpp-sem2-TCS/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/cpp-sem2-TCS/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -647,7 +647,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/Cpp-sem2-TCS"
+			"value" : "C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/cpp-sem2-TCS"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -659,7 +659,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Program Files (x86)/Cpp_sem2_TCS"
+			"value" : "C:/Program Files (x86)/cpp_sem2_TCS"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -875,7 +875,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "Cpp_sem2_TCS"
+			"value" : "cpp_sem2_TCS"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1270,7 +1270,19 @@
 			"value" : "FALSE"
 		},
 		{
-			"name" : "Cpp_sem2_TCS_BINARY_DIR",
+			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "linker supports push/pop state"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "TRUE"
+		},
+		{
+			"name" : "cpp_sem2_TCS_BINARY_DIR",
 			"properties" : 
 			[
 				{
@@ -1279,10 +1291,10 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/Cpp-sem2-TCS/cmake-build-debug"
+			"value" : "C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/cpp-sem2-TCS/cmake-build-debug"
 		},
 		{
-			"name" : "Cpp_sem2_TCS_IS_TOP_LEVEL",
+			"name" : "cpp_sem2_TCS_IS_TOP_LEVEL",
 			"properties" : 
 			[
 				{
@@ -1294,7 +1306,7 @@
 			"value" : "ON"
 		},
 		{
-			"name" : "Cpp_sem2_TCS_SOURCE_DIR",
+			"name" : "cpp_sem2_TCS_SOURCE_DIR",
 			"properties" : 
 			[
 				{
@@ -1303,19 +1315,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/Cpp-sem2-TCS"
-		},
-		{
-			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "linker supports push/pop state"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "TRUE"
+			"value" : "C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/cpp-sem2-TCS"
 		}
 	],
 	"kind" : "cache",

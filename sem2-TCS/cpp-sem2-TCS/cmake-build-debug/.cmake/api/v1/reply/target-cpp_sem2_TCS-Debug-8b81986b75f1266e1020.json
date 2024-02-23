@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Cpp_sem2_TCS.exe"
+			"path" : "cpp_sem2_TCS.exe"
 		},
 		{
-			"path" : "Cpp_sem2_TCS.pdb"
+			"path" : "cpp_sem2_TCS.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -38,7 +38,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++23 -fdiagnostics-color=always"
+					"fragment" : "-g -std=gnu++20 -fdiagnostics-color=always"
 				}
 			],
 			"language" : "CXX",
@@ -48,7 +48,7 @@
 				[
 					1
 				],
-				"standard" : "23"
+				"standard" : "20"
 			},
 			"sourceIndexes" : 
 			[
@@ -56,7 +56,7 @@
 			]
 		}
 	],
-	"id" : "Cpp_sem2_TCS::@6890427a1f51a3e7e1df",
+	"id" : "cpp_sem2_TCS::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -76,8 +76,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "Cpp_sem2_TCS",
-	"nameOnDisk" : "Cpp_sem2_TCS.exe",
+	"name" : "cpp_sem2_TCS",
+	"nameOnDisk" : "cpp_sem2_TCS.exe",
 	"paths" : 
 	{
 		"build" : ".",

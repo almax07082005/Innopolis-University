@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "Cpp_sem2_TCS",
+					"name" : "cpp_sem2_TCS",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "Cpp_sem2_TCS::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Cpp_sem2_TCS-Debug-36ee135a0bc267b13c6d.json",
-					"name" : "Cpp_sem2_TCS",
+					"id" : "cpp_sem2_TCS::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cpp_sem2_TCS-Debug-8b81986b75f1266e1020.json",
+					"name" : "cpp_sem2_TCS",
 					"projectIndex" : 0
 				}
 			]
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/Cpp-sem2-TCS/cmake-build-debug",
-		"source" : "C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/Cpp-sem2-TCS"
+		"build" : "C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/cpp-sem2-TCS/cmake-build-debug",
+		"source" : "C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/cpp-sem2-TCS"
 	},
 	"version" : 
 	{
