@@ -1,0 +1,3 @@
+C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/cpp-sem2-TCS/cmake-build-debug/CMakeFiles/cpp_sem2_TCS.dir
+C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/cpp-sem2-TCS/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/almax/Documents/Github/Innopolis-University/sem2-TCS/cpp-sem2-TCS/cmake-build-debug/CMakeFiles/rebuild_cache.dir
