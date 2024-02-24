@@ -1,0 +1,3 @@
+C:/Users/almax/Documents/Github/Innopolis-University/sem2-AGLA/cpp-sem2-AGLA/cmake-build-debug/CMakeFiles/cpp_sem2_AGLA.dir
+C:/Users/almax/Documents/Github/Innopolis-University/sem2-AGLA/cpp-sem2-AGLA/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/almax/Documents/Github/Innopolis-University/sem2-AGLA/cpp-sem2-AGLA/cmake-build-debug/CMakeFiles/rebuild_cache.dir
