@@ -12,9 +12,10 @@ struct Item {
 };
 
 // Counting sort implementation
-void MaksimAlDandan_count_srt(vector<Item>& items, int exp) {
+template <typename T>
+void MaksimAlDandan_count_srt(vector<T>& items, int exp) {
     vector<int> count(10, 0);
-    vector<Item> output(items.size());
+    vector<T> output(items.size());
 
     for (const auto& item : items)
         count[(item.maxBid / exp) % 10]++;
@@ -32,7 +33,8 @@ void MaksimAlDandan_count_srt(vector<Item>& items, int exp) {
 }
 
 // Radix sort implementation
-void MaksimAlDandan_radix_srt(vector<Item>& items) {
+template <typename T>
+void MaksimAlDandan_radix_srt(vector<T>& items) {
     int maxBid = INT_MIN;
     for (const auto& item : items)
         maxBid = max(maxBid, item.maxBid);
@@ -42,7 +44,8 @@ void MaksimAlDandan_radix_srt(vector<Item>& items) {
 }
 
 // Comparator function for sorting items
-bool compareItems(const Item& a, const Item& b) {
+template <typename T>
+bool compareItems(const T& a, const T& b) {
     if (a.currentBid != b.currentBid)
         return a.currentBid > b.currentBid;
     else if (a.maxBid != b.maxBid)
@@ -51,12 +54,13 @@ bool compareItems(const Item& a, const Item& b) {
         return a.index < b.index;
 }
 
-void merge(vector<Item>& items, int left, int mid, int right) {
+template <typename T>
+void merge(vector<T>& items, int left, int mid, int right) {
     int i, j, k;
     int n1 = mid - left + 1;
     int n2 = right - mid;
 
-    vector<Item> L(n1), R(n2);
+    vector<T> L(n1), R(n2);
 
     for (i = 0; i < n1; i++)
         L[i] = items[left + i];
@@ -90,7 +94,8 @@ void merge(vector<Item>& items, int left, int mid, int right) {
     }
 }
 
-void MaksimAlDandan_merge_srt(vector<Item>& items, int left, int right) {
+template <typename T>
+void MaksimAlDandan_merge_srt(vector<T>& items, int left, int right) {
     if (left < right) {
         int mid = left + (right - left) / 2;
 
