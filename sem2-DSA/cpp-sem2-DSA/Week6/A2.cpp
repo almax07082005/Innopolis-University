@@ -12,7 +12,7 @@ struct Item {
 };
 
 // Counting sort implementation
-void countingSort(vector<Item>& items, int exp) {
+void MaksimAlDandan_count_srt(vector<Item>& items, int exp) {
     vector<int> count(10, 0);
     vector<Item> output(items.size());
 
@@ -32,13 +32,13 @@ void countingSort(vector<Item>& items, int exp) {
 }
 
 // Radix sort implementation
-void radixSort(vector<Item>& items) {
+void MaksimAlDandan_radix_srt(vector<Item>& items) {
     int maxBid = INT_MIN;
     for (const auto& item : items)
         maxBid = max(maxBid, item.maxBid);
 
     for (int exp = 1; maxBid / exp > 0; exp *= 10)
-        countingSort(items, exp);
+        MaksimAlDandan_count_srt(items, exp);
 }
 
 // Comparator function for sorting items
@@ -90,12 +90,12 @@ void merge(vector<Item>& items, int left, int mid, int right) {
     }
 }
 
-void mergeSort(vector<Item>& items, int left, int right) {
+void MaksimAlDandan_merge_srt(vector<Item>& items, int left, int right) {
     if (left < right) {
         int mid = left + (right - left) / 2;
 
-        mergeSort(items, left, mid);
-        mergeSort(items, mid + 1, right);
+        MaksimAlDandan_merge_srt(items, left, mid);
+        MaksimAlDandan_merge_srt(items, mid + 1, right);
 
         merge(items, left, mid, right);
     }
@@ -111,8 +111,8 @@ int main() {
         cin >> items[i].currentBid >> items[i].maxBid;
     }
 
-    radixSort(items);
-    mergeSort(items, 0, int(items.size()) - 1);
+    MaksimAlDandan_radix_srt(items);
+    MaksimAlDandan_merge_srt(items, 0, int(items.size()) - 1);
 
     // Outputting indices of items in the original sequence
     for (const auto& item : items)
