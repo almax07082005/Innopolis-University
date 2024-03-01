@@ -1,7 +1,0 @@
-* Add a continuation of calculations
-* Add parenthesis
-* Add other menus to Calculator such as:
-    * Programming calculator
-    * Engineering calculator
-    * Date calculator
-* Add russian language
