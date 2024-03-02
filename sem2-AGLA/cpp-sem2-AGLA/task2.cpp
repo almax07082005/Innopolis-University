@@ -5,7 +5,7 @@
 typedef std::vector<std::vector<int>> vvint;
 
 class Matrix {
-private:
+protected:
     int rowsCount{0};
     int columnsCount{0};
     vvint matrix;
@@ -119,8 +119,37 @@ public:
     }
 };
 
+class SquareMatrix: public Matrix {
+public:
+    explicit SquareMatrix(int size = 0): Matrix(size, size) {}
+    friend std::istream& operator>>(std::istream& cin, SquareMatrix& m) {
+        cin >> m.rowsCount;
+        m.columnsCount = m.rowsCount;
+
+        for (int i = 0; i < m.rowsCount; i++) {
+            m.matrix.emplace_back();
+            for (int j = 0; j < m.rowsCount; j++) {
+                int value;
+                cin >> value;
+                m.matrix.at(i).push_back(value);
+            }
+        }
+
+        return cin;
+    }
+    friend std::ostream& operator<<(std::ostream& cout, const SquareMatrix& m) {
+        for (int i = 0; i < m.rowsCount; i++) {
+            for (int j = 0; j < m.rowsCount; j++) {
+                cout << m.matrix.at(i).at(j) << (j + 1 == m.rowsCount ? '\n' : ' ');
+            }
+        }
+
+        return cout;
+    }
+};
+
 int main() {
-    Matrix A, B, C;
+    SquareMatrix A, B, C;
     std::cin >> A >> B >> C;
 
     try {
