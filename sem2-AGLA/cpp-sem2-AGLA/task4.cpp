@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <iomanip>
 
 #define ERROR "Error: the dimensional problem occurred\n"
 typedef std::vector<std::vector<int>> vvint;
@@ -193,46 +194,75 @@ public:
 
     void changeRows(int rowIndex1, int rowIndex2) {
         std::swap(matrix.at(rowIndex1), matrix.at(rowIndex2));
+        /*for (int i = 0; i < columnsCount; i++) {
+            std::swap(matrix.at(rowIndex1).at(i), matrix.at(rowIndex2).at(i));
+        }*/
     }
 };
 
+/*
+In C++ (CPP 17) programming language write an OOP program (as an extension of the previous one) that computes the determinant of a matrix using the Gaussian elimination process with pivoting by maximum in absolute element.
+
+Input format
+
+A square matrix A as in the previous exercise.
+Output format
+
+After each transformation (row permutation or elimination) print out the modified A-matrix splitting the output segments with a line:
+<<step #k: elimination>> or <<step #k: permutation>>
+where k is the step number.
+Example:
+step #1: permutation
+or
+step #2: elimination
+The final answer should be also placed within the new section:
+<<result:>>
+Example:
+result:
+4.00
+Remark
+
+The type of the elements of the matrix is double. Print the result using the formatting to 2 digits after the floating point.
+*/
+
+/*double determinant(SquareMatrix& m) {
+    double det = 1.0;
+    int size = m.getRowsCount();
+
+    for (int i = 0; i < size; i++) {
+        int maxIndex = i;
+        for (int j = i + 1; j < size; j++) {
+            if (std::abs(m(j, i)) > std::abs(m(maxIndex, i))) {
+                maxIndex = j;
+            }
+        }
+
+        if (i != maxIndex) {
+            PermutationMatrix p(size);
+            p.changeRows(i, maxIndex);
+            m = p * m;
+            std::cout << "step #" << i + 1 << ": permutation\n" << m;
+            det *= -1;
+        }
+
+        for (int j = i + 1; j < size; j++) {
+            if (m(j, i) != 0) {
+                EliminationMatrix e(size);
+                e.changeCoefficient(m, j, i);
+                m = e * m;
+                std::cout << "step #" << i + 2 << ": elimination\n" << m;
+            }
+        }
+
+        det *= m(i, i);
+    }
+
+    return det;
+}*/
+
 int main() {
-    SquareMatrix A;
-    std::cin >> A;
-    EliminationMatrix E(A.getRowsCount());
-    PermutationMatrix P(A.getRowsCount());
-
-    try {
-        std::cout << IdentityMatrix(3);
-    } catch (const std::invalid_argument& exception) {
-        std::cout << exception.what();
-    }
-
-    try {
-        E.changeCoefficient(A, 1, 0);
-        std::cout << E;
-    } catch (const std::invalid_argument& exception) {
-        std::cout << exception.what();
-    }
-
-    try {
-        std::cout << E * A;
-    } catch (const std::invalid_argument& exception) {
-        std::cout << exception.what();
-    }
-
-    try {
-        P.changeRows(1, 0);
-        std::cout << P;
-    } catch (const std::invalid_argument& exception) {
-        std::cout << exception.what();
-    }
-
-    try {
-        std::cout << P * A;
-    } catch (const std::invalid_argument& exception) {
-        std::cout << exception.what();
-    }
-
+//    SquareMatrix m;
+//    std::cin >> m;
+//    std::cout << std::fixed << std::setprecision(2) << "result:\n" << determinant(m) << '\n';
     return EXIT_SUCCESS;
 }
