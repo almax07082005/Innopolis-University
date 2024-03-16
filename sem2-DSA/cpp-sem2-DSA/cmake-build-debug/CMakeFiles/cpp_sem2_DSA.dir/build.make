@@ -43,10 +43,10 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2023.3.2\bin\cmake\win\x64\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2023.3.4\bin\cmake\win\x64\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2023.3.2\bin\cmake\win\x64\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files\JetBrains\CLion 2023.3.4\bin\cmake\win\x64\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -72,15 +72,15 @@ CMakeFiles/cpp_sem2_DSA.dir/main.cpp.obj: CMakeFiles/cpp_sem2_DSA.dir/flags.make
 CMakeFiles/cpp_sem2_DSA.dir/main.cpp.obj: C:/Users/almax/Documents/Github/Innopolis-University/sem2-DSA/cpp-sem2-DSA/main.cpp
 CMakeFiles/cpp_sem2_DSA.dir/main.cpp.obj: CMakeFiles/cpp_sem2_DSA.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\almax\Documents\Github\Innopolis-University\sem2-DSA\cpp-sem2-DSA\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cpp_sem2_DSA.dir/main.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~2.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_sem2_DSA.dir/main.cpp.obj -MF CMakeFiles\cpp_sem2_DSA.dir\main.cpp.obj.d -o CMakeFiles\cpp_sem2_DSA.dir\main.cpp.obj -c C:\Users\almax\Documents\Github\Innopolis-University\sem2-DSA\cpp-sem2-DSA\main.cpp
+	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_sem2_DSA.dir/main.cpp.obj -MF CMakeFiles\cpp_sem2_DSA.dir\main.cpp.obj.d -o CMakeFiles\cpp_sem2_DSA.dir\main.cpp.obj -c C:\Users\almax\Documents\Github\Innopolis-University\sem2-DSA\cpp-sem2-DSA\main.cpp
 
 CMakeFiles/cpp_sem2_DSA.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_sem2_DSA.dir/main.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~2.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\almax\Documents\Github\Innopolis-University\sem2-DSA\cpp-sem2-DSA\main.cpp > CMakeFiles\cpp_sem2_DSA.dir\main.cpp.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\almax\Documents\Github\Innopolis-University\sem2-DSA\cpp-sem2-DSA\main.cpp > CMakeFiles\cpp_sem2_DSA.dir\main.cpp.i
 
 CMakeFiles/cpp_sem2_DSA.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_sem2_DSA.dir/main.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~2.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\almax\Documents\Github\Innopolis-University\sem2-DSA\cpp-sem2-DSA\main.cpp -o CMakeFiles\cpp_sem2_DSA.dir\main.cpp.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\almax\Documents\Github\Innopolis-University\sem2-DSA\cpp-sem2-DSA\main.cpp -o CMakeFiles\cpp_sem2_DSA.dir\main.cpp.s
 
 # Object files for target cpp_sem2_DSA
 cpp_sem2_DSA_OBJECTS = \
