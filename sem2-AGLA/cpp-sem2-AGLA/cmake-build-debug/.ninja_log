@@ -1,7 +1,7 @@
 # ninja log v5
-1548	1782	7325700783131765	cpp_sem2_AGLA.exe	a176843178da84e9
-1	1411	7322819123333373	CMakeFiles/cpp_sem2_AGLA.dir/task4.cpp.obj	42e648e5b9f03879
-0	844	7324726509529543	CMakeFiles/cpp_sem2_AGLA.dir/main.cpp.obj	c01d659d5570fd51
-5	1547	7325700780829322	CMakeFiles/cpp_sem2_AGLA.dir/task2.cpp.obj	7beaea71b8b3bdf3
+1364	1539	7329846027385994	cpp_sem2_AGLA.exe	f36689bb5bed99f2
+8	1364	7329846025681216	CMakeFiles/cpp_sem2_AGLA.dir/task4.cpp.obj	42e648e5b9f03879
 1	720	7325703074476185	CMakeFiles/cpp_sem2_AGLA.dir/main.cpp.obj	c01d659d5570fd51
-729	860	7325703075807742	cpp_sem2_AGLA.exe	26bec0c0663cf6b
+5	1547	7325700780829322	CMakeFiles/cpp_sem2_AGLA.dir/task2.cpp.obj	7beaea71b8b3bdf3
+1	814	7329861984741083	CMakeFiles/cpp_sem2_AGLA.dir/main.cpp.obj	c01d659d5570fd51
+823	964	7329861986187189	cpp_sem2_AGLA.exe	26bec0c0663cf6b
