@@ -3,4 +3,4 @@ project(cpp_sem2_AGLA)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(cpp_sem2_AGLA task5.cpp)
+add_executable(cpp_sem2_AGLA main.cpp)

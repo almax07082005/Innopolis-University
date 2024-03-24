@@ -49,8 +49,8 @@ cmake_ninja_workdir = C$:/Users/almax/Documents/Github/Innopolis-University/sem2
 
 build cmake_object_order_depends_target_cpp_sem2_AGLA: phony || CMakeFiles/cpp_sem2_AGLA.dir
 
-build CMakeFiles/cpp_sem2_AGLA.dir/task5.cpp.obj: CXX_COMPILER__cpp_sem2_AGLA_unscanned_Debug C$:/Users/almax/Documents/Github/Innopolis-University/sem2-AGLA/cpp-sem2-AGLA/task5.cpp || cmake_object_order_depends_target_cpp_sem2_AGLA
-  DEP_FILE = CMakeFiles\cpp_sem2_AGLA.dir\task5.cpp.obj.d
+build CMakeFiles/cpp_sem2_AGLA.dir/main.cpp.obj: CXX_COMPILER__cpp_sem2_AGLA_unscanned_Debug C$:/Users/almax/Documents/Github/Innopolis-University/sem2-AGLA/cpp-sem2-AGLA/main.cpp || cmake_object_order_depends_target_cpp_sem2_AGLA
+  DEP_FILE = CMakeFiles\cpp_sem2_AGLA.dir\main.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\cpp_sem2_AGLA.dir
   OBJECT_FILE_DIR = CMakeFiles\cpp_sem2_AGLA.dir
@@ -63,7 +63,7 @@ build CMakeFiles/cpp_sem2_AGLA.dir/task5.cpp.obj: CXX_COMPILER__cpp_sem2_AGLA_un
 #############################################
 # Link the executable cpp_sem2_AGLA.exe
 
-build cpp_sem2_AGLA.exe: CXX_EXECUTABLE_LINKER__cpp_sem2_AGLA_Debug CMakeFiles/cpp_sem2_AGLA.dir/task5.cpp.obj
+build cpp_sem2_AGLA.exe: CXX_EXECUTABLE_LINKER__cpp_sem2_AGLA_Debug CMakeFiles/cpp_sem2_AGLA.dir/main.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\cpp_sem2_AGLA.dir

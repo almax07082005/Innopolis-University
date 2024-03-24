@@ -6,13 +6,13 @@
 #define DIMENSIONAL_ERROR "Error: the dimensional problem occurred\n"
 #define SINGULAR_ERROR "Error: matrix A is singular\n"
 #define EPSILON 1e-9
-typedef std::vector<std::vector<double>> vvint;
+typedef std::vector<std::vector<double>> vvdouble;
 
 class Matrix {
 protected:
     int rowsCount{0};
     int columnsCount{0};
-    vvint matrix;
+    vvdouble matrix;
 public:
     explicit Matrix(int rowsCount = 0, int columnsCount = 0): rowsCount(rowsCount), columnsCount(columnsCount) {
         for (int i = 0; i < rowsCount; i++) {
@@ -168,8 +168,7 @@ public:
 
         for (int i = 0; i < columnsCount; i++) {
             makePermutation(i, step, sign, output);
-            for (int j = 0; j < rowsCount; j++) {
-                if (i == j) continue;
+            for (int j = i + 1; j < rowsCount; j++) {
                 makeElimination(j, i, step, output);
             }
         }
@@ -178,6 +177,13 @@ public:
         if (std::abs(determinant) < EPSILON || !std::isfinite(determinant)) {
             throw std::invalid_argument(SINGULAR_ERROR);
         }
+
+        for (int i = columnsCount - 1; i > 0; i--) {
+            for (int j = i - 1; j >= 0; j--) {
+                makeElimination(j, i, step, output);
+            }
+        }
+
         diagonalNormalization(output);
         return output.str();
     }
