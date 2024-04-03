@@ -1,0 +1,118 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage{listings}
+
+
+\title{Problem set 3}
+
+
+\author{by Maksim Al Dandan}
+\date{February 6, 2024}
+
+
+\begin{document}
+\maketitle
+
+\section*{Week 3. Problem set (solutions)}
+\begin{enumerate}
+  \item Consider a hash table with 13 slots and the hash function $h(k)=\left(k^{2}-2 k+7\right)$ mod 13 . Show the state of the hash table after inserting the keys (in this order)
+\end{enumerate}
+
+$$
+5,28,19,15,20,33,12,17,10,13,3,34
+$$
+
+with collisions resolved by linear probing [Cormen, Section 11.4].
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+Index & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+\hline
+Key & 3 &  & 17 & 20 & 33 & 19 & 34 & 28 & 15 & 5 & 12 & 10 & 13 \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{enumerate}
+  \setcounter{enumi}{1}
+  \item Consider the following algorithm (see pseudocode conventions in [Cormen, Section 2.1]). The inputs to this algorithm are a map $M$ and a key $k$. Additionally, assume the following:
+\end{enumerate}
+
+(a) The map $M$ uses the positive integers both for keys and for values.
+
+(b) The map $M$ is not empty and contains $n$ distinct keys.
+
+(c) The map $M$ is represented as a hashtable with load factor $\alpha$.
+
+(d) The map $M$ resolves collisions via double hashing [Cormen, Section 11.4].
+
+(e) For all keys $k$, if a value in $M$ at $k$ exists, then it is smaller than $k$. \\ \\
+
+
+\begin{tabular}{p{3cm}p{8cm}p{3cm}}
+
+ 1 & secret(M, k): & 0 \\
+ 2 & \hspace{0.5cm} total := 0 & 1 \\
+ 3 & \hspace{0.5cm} v := M.get(k) & $\frac{1}{1 - \alpha}$ \\
+ 4 & \hspace{0.5cm} for i=1 to v & k \\
+ 5 & \hspace{1cm} if M.hasKey(i) & $\frac{1}{1 - \alpha}$ * k \\
+6 & \hspace{1.5cm} total := total + M.get(i) & $\frac{1}{1 - \alpha}$ * k \\
+7 & \hspace{0.5cm} return total & 1 \\
+\end{tabular}
+
+\break
+
+Compute the average case time complexity of secret. The answer must use $O$-notation and may depend on $n, k$, and $\alpha$. For the average case analysis, use independent uniform permutation hashing. Assume worst case for the contents of the input map $M$.
+
+Briefly justify your answer ( $2-3$ sentences). Detailed proof for the asymptotic complexity is not required for this exercise. \\
+
+\textbf{Average case time complexity: }
+\begin{equation}
+  O(\frac{1}{1 - \alpha} + \frac{2k}{1 - \alpha})
+\end{equation}
+\begin{equation}
+  O(\frac{1}{1 - \alpha}(2k + 1))
+\end{equation}
+\begin{equation}
+  O(\frac{k}{1 - \alpha})
+\end{equation}
+
+The \textbf{third} equation is the answer. \\
+Because of the clause (e) $v \leq k$, hence, the working time of the loop is $k$ at most.
+The methods of map (such as $get$ and $hasKey$) are getting $\frac{1}{1 - \alpha}$ cost due to the lecture presentation.
+
+\begin{enumerate}
+  \setcounter{enumi}{2}
+  \item In your own words, explain how it is possible to implement deletion of a key-value pair from a hashtable with $O(1)$ worst case time complexity if collision resolution is implemented using chaining? Specify the data structures and methods involved.
+\end{enumerate}
+
+In a hashtable with chaining for collision resolution, each bucket in the hashtable contains a linked list of key-value pairs that hash to the same index. To achieve $O(1)$ worst-case time complexity for deletion, we can follow these steps:
+
+\begin{enumerate}
+  \item \textbf{Hashing Function}: Use a good hashing function that distributes keys uniformly across the hashtable. This ensures that the distribution of elements is balanced, minimizing collisions.
+
+  \item \textbf{Bucket Organization:} Implement the hashtable as an array of linked lists (buckets). Each bucket holds the key-value pairs that hash to the same index.
+  
+  \item \textbf{Find the Bucket:} To delete a key-value pair, first, we need to find the appropriate bucket based on the hashed index of the key.
+  
+  \item \textbf{Search in the Bucket:} Once we locate the bucket, we need to traverse the linked list within that bucket to find the specific key-value pair we want to delete. This operation typically requires $O(k)$ time complexity, where $k$ is the average number of elements per bucket.
+  
+  \item \textbf{Delete Operation:} To delete the key-value pair, we modify the pointers in the linked list to remove the node containing the pair. This operation is constant time $O(1)$, as it involves changing pointers within the linked list.
+\end{enumerate}
+
+By following these steps, we ensure that the time complexity of deleting a key-value pair from the hashtable remains $O(1)$ in the worst case. However, it's essential to note that this $O(1)$ time complexity assumes a well-designed hashing function, a good distribution of elements across the buckets, and a relatively small average number of elements per bucket.
+
+\section*{References}
+[Cormen] T. H. Cormen, C. E. Leiserson, R. L. Rivest and C. Stein. Introduction to Algorithms, Fourth Edition. The MIT Press 2022
+
+
+\end{document}
