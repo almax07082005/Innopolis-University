@@ -1,0 +1,185 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amstext} % for \text macro
+\usepackage{array}   % for \newcolumntype macro
+\newcolumntype{L}{>{$}l<{$}} % math-mode version of "l" column type
+\usepackage{makecell}
+\usepackage{caption}
+
+\usepackage[outline]{contour}
+\contourlength{0.25pt}
+
+\usepackage{listings} %For code in appendix
+\lstset
+{ %Formatting for code in appendix
+    language=C++,
+    basicstyle=\footnotesize,
+    numbers=left,
+    stepnumber=1,
+    showstringspaces=false,
+    tabsize=2,
+    breaklines=true,
+    breakatwhitespace=false,
+}
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\title{DSA. Problem solutions. Week 4.}
+\author{Maksim Al Dandan}
+
+\begin{document}
+\maketitle
+
+
+% TASK 1
+\section{Task 1}
+\subsection{Statement}
+Compute asymptotic worst case time complexity of the solve procedure:
+
+\begin{enumerate}
+    \setlength\itemsep{0em}
+    \item[(i)] Express the running time of the solve procedure $T(n)$ as a recurrence relation.
+    \item[(ii)] Find the asymptotic complexity of $T(n)$ using the master theorem. 
+    \item[(iii)] Specify which case of the master theorem applies (if any).
+    \item[(iv)] Write down conditions for this case that need to be checked (write down specialized version for a particular recurrence).
+    \item[(v)] Prove that the conditions are satisfied. For asymptotic notation, each property used in a proof must be either proven explicitly or properly referenced (e.g. by citing [Cormen] or a particular Lecture/Tutorial slide).
+\end{enumerate}
+
+\begin{lstlisting}[escapeinside={(*}{*)}]
+    /* A is a 0-indexed array
+     * n is the number of elements in A */
+    solve(A, n):
+      helper(A, 0 , n - 1)
+ 
+    helper(A, l, r):
+      if l > r:
+        return 
+      else:
+        k := (*$\ceil{(r - l + 1) / 4}$*) 
+        for j from 0 to 3 /* inclusive */
+          helper(A, l + j * k, min(r, l + (j + 1) * k))
+        for a from l to r
+          m := i
+          for b from l to r
+            if A[b] (*$\geq$*) A[m]:
+              m = b
+          exchange A[m] with A[a]
+\end{lstlisting}
+
+\subsection{Solution}
+
+\hspace{0.5cm} Running time of the "solve" procedure: \(T(n) = 4T(\frac{n}{4}) + n^2\) \\
+We divide array by four parts and call the helper function itself only once within the for loop for exactly 4 times. That's way \(a = b = 4\). \\
+
+$f(n) = n^2$ is because the code from the 13th line till the end takes asymptotic worst case time complexity $O(n^2)$. \\
+
+Then let's try to apply the Master theorem. \\ \\
+$a = 4, b = 4, f(n) = n^2, n^{\log_{b}a} = n^{\log_{4}4} = n$ \\
+\textbf{[Case 1] $\implies$} $f(n) = n^2 = O(n^{1 - \epsilon})$, $\epsilon > 0$ : $\epsilon$ doesn't exist \\
+\textbf{[Case 2] $\implies$} $f(n) = n^2 = \Theta(n\times \log^k{n})$, $k \geq 0$ : $k$ doesn't exist \\
+\textbf{[Case 3] $\implies$} $f(n) = n^2 = \Omega(n^{1 + \epsilon})$, $\epsilon > 0$ : $\epsilon = 0.5$ (exist), then we nee to check \textit{regularity condition}. \\
+\begin{equation}
+    4\times (\frac{n}{4})^2 \leq cn^2
+\end{equation}
+\begin{equation}
+    c \geq \frac{1}{4}, c < 1
+\end{equation}
+For instance, $c = 0.5$. Hence, \textit{regularity condition} holds and, thus, we can compute $T(n)$. \\
+$T(n) = \Theta(f(n)) = \Theta(n^2)$. \\
+
+\textbf{Answer: $T(n) = \Theta(n^2)$.}
+
+% TASK 2
+\section{Task 2}
+\subsection{Statement}
+For each of the following recurrences, apply the master theorem [Cormen, Theorem 4.1] yielding a closed form formula for the asymptotic complexity of $T(n)$. Assume that $T(n) = 1$ when $n < 10$ for all recurrences below. You must specify the following:
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Can the theorem be applied to the recurrence?
+    \item If yes, then
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item [(i)] Which case of the master theorem applies?
+        \item [(ii)] Which conditions for this case that need to be checked (write down specialized version for a particular recurrence).
+        \item [(iii)] Prove that the condition is satisfied. For asymptotic notation, each property used in a proof \contour{black}{must} be either proven explicitly or properly referenced (e.g. by citing [Cormen] or a particular Lecture/Tutorial slide).
+        \item [(iv)] Provide asymptotic complexity for $T(n)$ using $\Theta$-notation.
+    \end{enumerate}
+    \item Otherwise, provide an explicit justification, explaining why the theorem cannot be applied.
+\end{itemize}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item [(a)] $T(n) = 2T(n/3) + \log_2n$
+    \item [(b)] $T(n) = 7T(n/49) + \sqrt{n}\cdot\log_2^2 n$
+    \item [(c)] $T(n) = 4T(n/3) + n^2$
+    \item [(d)] $T(n) = 2T(\sqrt{n}) + n$
+    \item [(e)] $T(n) = \frac{1}{2}T(2n) + n\log_2 n$
+\end{itemize}
+
+\subsection{Solution}
+\subsubsection{Point (a)}
+
+$a = 2, b = 3, f(n) = \log_{2}n, n^{\log_{b}a} = n^{\log_{3}2} = n \approx n^{0.631}$ \\
+\textbf{[Case 1] $\implies$} $f(n) = \log_{2}n = O(n^{0.631 - \epsilon})$, $\epsilon > 0$ : $\epsilon = 0.1$ (exist), then we can compute $T(n)$. \\ \\
+$T(n) = \Theta(n^{\log_32})$
+
+\subsubsection{Point (b)}
+
+$a = 7, b = 49, f(n) = \sqrt{n} \times \log^2_2n, n^{\log_{b}a} = n^{\log_{49}7} = \sqrt{n}$ \\
+\textbf{[Case 1] $\implies$} $f(n) = \sqrt{n} \times \log^2_2n = O(n^{\frac{1}{2} - \epsilon})$, $\epsilon > 0$ : $\epsilon$ doesn't exist \\
+\textbf{[Case 2] $\implies$} $f(n) = \sqrt{n} \times \log^2_2n = \Theta(\sqrt{n} \times \log^k{n})$, $k \geq 0$ : $k = 2$ (exist), then we can compute $T(n)$. \\ \\
+$T(n) = \Theta(\sqrt{n} \times \log^{3}_{2}n)$
+
+\subsubsection{Point (c)}
+
+$a = 4, b = 3, f(n) = n^2, n^{\log_{b}a} = n^{\log_{3}4} \approx n^{1.262}$ \\
+\textbf{[Case 1] $\implies$} $f(n) = n^2 = O(n^{1.262 - \epsilon})$, $\epsilon > 0$ : $\epsilon$ doesn't exist \\
+\textbf{[Case 2] $\implies$} $f(n) = n^2 = \Theta(n\times \log^k{n})$, $k \geq 0$ : $k$ doesn't exist \\
+\textbf{[Case 3] $\implies$} $f(n) = n^2 = \Omega(n^{1.262 + \epsilon})$, $\epsilon > 0$ : $\epsilon = 0.1$ (exist), then we nee to check \textit{regularity condition}. \\
+\setcounter{equation}{0}
+\begin{equation}
+    4\times (\frac{n}{3})^2 \leq cn^2
+\end{equation}
+\begin{equation}
+    c \geq \frac{4}{9}, c < 1
+\end{equation}
+For instance, $c = \frac{5}{9}$. Hence, \textit{regularity condition} holds and, thus, we can compute $T(n)$. \\ \\
+$T(n) = \Theta(f(n)) = \Theta(n^2)$.
+
+\subsubsection{Point (d)}
+
+$a = 2, b = 1, f(n) = n$ \\
+Hence, cannot be computed because by the formula of Master theorem $b$ should be constant and $b > 1$.
+
+\subsubsection{Point (e)}
+
+$a = \frac{1}{2}, b = \frac{1}{2}, f(n) = n\log_2n$ \\
+Hence, cannot be computed because by the formula of Master theorem $b > 1$.
+
+\subsection{Answer}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item [(a)] $T(n) = \Theta(n^{\log_32})$
+    \item [(b)] $T(n) = \Theta(\sqrt{n} \times \log^{3}_{2}n)$
+    \item [(c)] $T(n) = \Theta(n^2)$
+    \item [(d)] No answer
+    \item [(e)] No answer
+\end{itemize}
+
+\section*{References}
+[Cormen] T. H. Cormen, C. E. Leiserson, R. L. Rivest and C. Stein. Introduction to Algorithms, Fourth Edition. The MIT Press 2022
+
+\end{document}
