@@ -1,0 +1,71 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+
+\title{Data Structures and Algorithms Spring 2024 — Problem Sets }
+
+
+\author{by Nikolai Kudasov}
+
+
+
+\begin{document}
+\maketitle
+
+
+\section*{Week 5. Problem set}
+A company is running Big Data ${ }^{\text {TM }}$ Analysis using cloud computing infrastructure. It has three big analysis tasks at the moment and five computational cores available to allocate among these tasks. Therefore, the company managers need to determine how many cores (if any) to allocate to each of these regions to minimize the total cost of the analysis (measured in CPU hours). Each core can only be dedicated to one task, so the number of cores allocated to each task must be an integer.
+
+The following table gives the estimated cost for each task for each possible allocation of cores.
+
+\begin{enumerate}
+  \item Describe a general algorithm for any number $C$ of available cores, any number $A$ of analysis tasks and table $\mathrm{E}$ with estimates:
+\end{enumerate}
+
+(a) Summarize the idea for a naïve recursive algorithm.
+
+(b) Clearly identify overlapping subproblems (provide an explicit example).
+
+(c) Write down pseudocode for the dynamic programming algorithm that solves the problem (top-down or bottom-up). It is enough to compute the minimum cost without keeping track of the computing core allocation.
+
+\begin{enumerate}
+  \setcounter{enumi}{1}
+  \item Provide asymptotic worst-case time complexity with justification
+\end{enumerate}
+
+(a) for the naïve recursive algorithm
+
+(b) for the dynamic programming algorithm
+
+\begin{enumerate}
+  \setcounter{enumi}{2}
+  \item Apply the dynamic programming algorithm to an instance of the problem below. You must provide the table with solutions for subproblems that are computed in the algorithm, as well as give the final answer to the problem.
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{|c||c|c|c|}
+\hline
+Number of cores & Task A & Task B & Task C \\
+\hline\hline
+0 & $\infty$ & $\infty$ & $\infty$ \\
+\hline
+1 & $12.0 \mathrm{CPU}$ hours & $13.0 \mathrm{CPU}$ hours & $15.0 \mathrm{CPU}$ hours \\
+\hline
+2 & $10.5 \mathrm{CPU}$ hours & $10.0 \mathrm{CPU}$ hours & $11.0 \mathrm{CPU}$ hours \\
+\hline
+3 & $9.0 \mathrm{CPU}$ hours & $8.0 \mathrm{CPU}$ hours & $7.5 \mathrm{CPU}$ hours \\
+\hline
+4 & $7.0 \mathrm{CPU}$ hours & $7.0 \mathrm{CPU}$ hours & $4.5 \mathrm{CPU}$ hours \\
+\hline
+5 & $4.5 \mathrm{CPU}$ hours & $5.0 \mathrm{CPU}$ hours & $2.0 \mathrm{CPU}$ hours \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\end{document}
