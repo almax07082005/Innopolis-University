@@ -1,0 +1,78 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+
+\title{Data Structures and Algorithms Spring 2024 — Problem Sets }
+
+
+\author{by Nikolai Kudasov}
+
+
+
+%New command to display footnote whose markers will always be hidden
+\let\svthefootnote\thefootnote
+\newcommand\blfootnotetext[1]{%
+  \let\thefootnote\relax\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \let\thefootnote\svthefootnote%
+}
+
+%Overriding the \footnotetext command to hide the marker if its value is `0`
+\let\svfootnotetext\footnotetext
+\renewcommand\footnotetext[2][?]{%
+  \if\relax#1\relax%
+    \ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+  \else%
+    \if?#1\ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+    \else\svfootnotetext[#1]{#2}\fi%
+  \fi
+}
+
+\begin{document}
+\maketitle
+
+
+\section*{Week 6. Problem set}
+\begin{enumerate}
+  \item Consider a modification of the randomized QUICK-SoRT algorithm [Cormen, §7.3] that stops recursion when the size of subarray becomes less than or equal to $k(k \leq n)$. For arrays of size $\leq k$, the modified algorithm performs BUBBLE-SORT. Answer the following questions about the modified algorithm:
+\end{enumerate}
+
+(a) What is the worst case time complexity in terms of $n$ and $k$ ?
+
+(b) What is the best case time complexity in terms of $n$ and $k$ ?
+
+(c) What is the average ${ }^{1}$ case time complexity in terms of $n$ and $k$ ?
+
+The answer should be given using $\Theta$-notation.
+
+Provide a brief justification for each case (1-2 sentences).
+
+\begin{enumerate}
+  \setcounter{enumi}{1}
+  \item Apply Counting-Sort to the following input array where each column corresponds to one item with its numeric key and single-character satellite data:
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+2 & 8 & 2 & 6 & 7 & 6 & 3 & 4 & 1 & 6 & 2 & 0 \\
+\hline
+$\mathrm{D}$ & $\mathrm{T}$ & $\mathrm{O}$ & $\mathrm{G}$ & $\mathrm{A}$ & $\mathrm{R}$ & $\mathrm{N}$ & $\mathrm{G}$ & $\mathrm{R}$ & $\mathrm{E}$ & $\mathrm{I}$ & $\mathrm{U}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+You must demonstrate the final state of the auxiliary arrays used in the algorithm, as well as the output of the array.
+
+\section*{References}
+[Cormen] T. H. Cormen, C. E. Leiserson, R. L. Rivest and C. Stein. Introduction to Algorithms, Fourth Edition. The MIT Press 2022
+\footnotetext{${ }^{1}$ assuming all elements in the input array are distinct and any initial order in the array is equally likely
+}
+
+
+\end{document}

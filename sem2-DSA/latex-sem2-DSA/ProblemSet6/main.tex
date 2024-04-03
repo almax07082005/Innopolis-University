@@ -1,0 +1,97 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+\title{Problem set 6}
+\author{by Maksim Al Dandan}
+
+%New command to display footnote whose markers will always be hidden
+\let\svthefootnote\thefootnote
+\newcommand\blfootnotetext[1]{%
+  \let\thefootnote\relax\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \let\thefootnote\svthefootnote%
+}
+
+%Overriding the \footnotetext command to hide the marker if its value is `0`
+\let\svfootnotetext\footnotetext
+\renewcommand\footnotetext[2][?]{%
+  \if\relax#1\relax%
+    \ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+  \else%
+    \if?#1\ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+    \else\svfootnotetext[#1]{#2}\fi%
+  \fi
+}
+
+\begin{document}
+\maketitle
+
+
+\section{Task 1}
+\subsection{Statement}
+
+Consider a modification of the randomized QUICK-SORT algorithm [Cormen, §7.3] that stops recursion when the size of subarray becomes less than or equal to $k (k \leq n)$. For arrays of size $\leq k$, the modified algorithm performs BUBBLE-SORT. Answer the following questions about the modified algorithm:
+
+(a) What is the worst case time complexity in terms of $n$ and $k$ ?
+
+(b) What is the best case time complexity in terms of $n$ and $k$ ?
+
+(c) What is the average${}^{1}$ case time complexity in terms of $n$ and $k$ ?
+
+The answer should be given using $\Theta$-notation.
+
+Provide a brief justification for each case (1-2 sentences).
+
+\subsection{Solution}
+
+(a) QUICK-SORT worst case time complexity for $n - k$ is $\Theta(n^2 - k^2)$. BUBBLE-SORT worst case time complexity for $k$ is $\Theta(k^2)$. Hence, \textbf{the answer:} $\Theta(n^2 - k^2 + k^2) = $ \textbf{$\Theta(n^2)$}. \\
+(b) QUICK-SORT best case time complexity for $n - k$ is $\Theta(n(\log_2n - \log_2k)) = \Theta(n\log_2{\frac{n}{k}})$. BUBBLE-SORT best case time complexity for $k$ is $\Theta(k)$. Hence, \textbf{the answer: $\Theta(n\log_2{\frac{n}{k}} + k)$}. \\
+(c) QUICK-SORT average case time complexity for $n - k$ is $\Theta(n(\log_2n - \log_2k)) = \Theta(n\log_2{\frac{n}{k}})$. BUBBLE-SORT average case time complexity for $k$ is $\Theta(k^2)$. Hence, \textbf{the answer: $\Theta(n\log_2{\frac{n}{k}} + k^2)$}.
+
+\section{Task 2}
+\subsection{Statement}
+
+Apply Counting-Sort to the following input array where each column corresponds to one item with its numeric key and single-character satellite data:
+
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+  \hline
+  2 & 8 & 2 & 6 & 7 & 6 & 3 & 4 & 1 & 6 & 2 & 0 \\
+  \hline
+  $\mathrm{D}$ & $\mathrm{T}$ & $\mathrm{O}$ & $\mathrm{G}$ & $\mathrm{A}$ & $\mathrm{R}$ & $\mathrm{N}$ & $\mathrm{G}$ & $\mathrm{R}$ & $\mathrm{E}$ & $\mathrm{I}$ & $\mathrm{U}$ \\
+  \hline
+  \end{tabular}
+\end{center}
+
+You must demonstrate the final state of the auxiliary arrays used in the algorithm, as well as the output of the array.
+
+\subsection{Solution}
+
+\textbf{counts} (array of counts of elements in main array): 1 1 3 1 1 0 3 1 1 \\
+\textbf{accum} (partial sums for array of counts): 0 1 2 5 6 7 7 10 11 \\
+\textbf{resultMainData} (output integers): 0 1 2 2 2 3 4 6 6 6 7 8 \\
+\textbf{resultSatelliteData} (output chars): U R D O I N G G R E A T \\
+\textbf{Answer:}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+  \hline
+  0 & 1 & 2 & 2 & 2 & 3 & 4 & 6 & 6 & 6 & 7 & 8 \\
+  \hline
+  U & R & D & O & I & N & G & G & R & E & A & T \\
+  \hline
+  \end{tabular}
+\end{center}
+
+\section{References}
+[Cormen] T. H. Cormen, C. E. Leiserson, R. L. Rivest and C. Stein. Introduction to Algorithms, Fourth Edition. The MIT Press 2022
+\footnotetext{${ }^{1}$ assuming all elements in the input array are distinct and any initial order in the array is equally likely
+}
+
+\end{document}
