@@ -1,0 +1,126 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amstext} % for \text macro
+\usepackage{array}   % for \newcolumntype macro
+\newcolumntype{L}{>{$}l<{$}} % math-mode version of "l" column type
+\usepackage{makecell}
+\usepackage{caption}
+
+\usepackage{listings} %For code in appendix
+\lstset
+{ %Formatting for code in appendix
+    language=Scilab,
+    basicstyle=\footnotesize,
+    numbers=left,
+    stepnumber=1,
+    showstringspaces=false,
+    tabsize=2,
+    breaklines=true,
+    breakatwhitespace=false,
+}
+
+\title{DSA. Problem solutions. Week 1.}
+\author{Maksim Al Dandan}
+
+\begin{document}
+\maketitle
+
+\section{Task 1}
+
+\subsection{Statement}
+
+Compute asymptotic worst case time complexity of the following algorithm (see pseudocode conventions in [\textcolor{blue}{Cormen}, Section 2.1]). You \textbf{must} use \(\Theta\)-notation. For justification, provide execution cost and frequency count for each line in the body of the \textcolor{blue}{secret} procedure. Optionally, you may provide the details for the computation of the running time \(T(n)\) for worst case scenario. Proof for the asymptotic bound is not required for this exercise.
+
+\begin{lstlisting}[mathescape=true]
+      /* A is a 0-indexed array,
+       * n is the number of items in A */
+      secret(A, n):
+        k := 0
+        for i = 1 to n-1
+          k := k + 1
+          j := i
+          while j < n and A[j-1] $\ge$ A[j]
+            j := 2 * j
+          exchange A[i] with A[min(j, n - 1)]
+\end{lstlisting}
+
+\subsection{Solution}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{| L | L |}
+    \hline
+    \text{Cost} & \text{Times} \\
+    \hline
+    c_4 & 1 \\
+    c_5 &  n \\
+    c_6 &  n - 1 \\
+    c_7 &  n - 1 \\
+    c_8 &  n(n - 1) \\
+    c_9 &  (n - 1)^2 \\
+    c_{10} &  n - 1 \\
+    \hline
+    \end{tabular}
+\end{table}
+
+\begin{equation}
+    T(n) = c_4 * 1 + c_5 * n + c_6 * (n - 1) + c_7 * (n - 1) + c_8 * n(n - 1) + c_9 * (n - 1)^2 + c_{10} * (n - 1)
+\end{equation}
+\begin{equation}
+    T(n) = c_4 + nc_5 + c_6(n - 1) + c_7(n - 1) + nc_8(n - 1) + c_9(n - 1)^2 + c_{10}(n - 1)
+\end{equation} \\
+\textbf{Answer: $T(n) = \Theta(n^2)$}
+
+\section{Task 2}
+
+\subsection{Statement}
+
+Indicate, for each pair of expressions \((A, B)\) in the table below whether \(A = O(B)\),\( A = o(B)\), \(A = \Omega(B)\), \(A = \omega(B)\), or \(A = \Theta(B)\). Write your answer in the form of the table with \textit{yes} or \textit{no} written in each box.
+
+\subsection{Answer}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c||c|c|c|c|c|} \hline
+        \(A\) & \(B\) & \(A = O(B)\) & \( A = o(B)\) & \(A = \Omega(B)\) & \(A = \omega(B)\)& \(A = \Theta(B)\) \\ \hline \hline
+        \(1.0001^n\) & \(n^{1000}\) & yes & yes & no & no & no \\ \hline 
+        \(3\) & \((1+1/n)^n\) & yes & yes & no & no & no \\ \hline 
+        \(n^{\sin n}\) & \(\log_2n\) & no & no & no & no & no \\ \hline 
+        \(\log_2^3n\) & \(\sqrt[6]n\) & no & no & yes & yes & no \\ \hline
+    \end{tabular}
+\end{table}
+
+\section{Task 3}
+\subsection{Statement}
+
+Let \(f\) and \(g\) be functions from positive integers to positive reals. Assume \(g(n) > n\) for \(n > 0\). Using definition of asymptotic notation, prove formally that
+
+\[max(f(n) + \sqrt{n}, g(n) - n) = O(f(n) + g(n))\]
+
+\subsection{Solution}
+\textbf{Proof:} \\
+
+We need to show that there exist constants c and $n_0$, such that for all n $\geq n_0$ we have. \\
+Let us consider two cases: \\ \\
+1. $max = f(n) + \sqrt{n}$ \\
+It implies that: $f(n) + \sqrt{n} \leq f(n) + g(n)$, where g(n) $>$ n \\
+Thus, $f(n) + \sqrt{n} \leq f(n) + n$ (at least) \\
+But n grows faster than $\sqrt{n}$, hence it works. \\ \\
+2. $max = g(n) - n$ \\
+It implies that: $g(n) - n \leq f(n) + g(n)$, where g(n) $>$ n \\
+Thus, $f(n) \geq -n$, but f(n) due to condition contains only of positive reals \\
+Hence, it works always. \\ \\
+\textbf{QED}
+
+\end{document}
