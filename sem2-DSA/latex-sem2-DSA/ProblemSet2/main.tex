@@ -1,0 +1,82 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+\title{DSA. Problem solutions. Week 2.}
+\author{by Maksim Al Dandan}
+
+
+%New command to display footnote whose markers will always be hidden
+\let\svthefootnote\thefootnote
+\newcommand\blfootnotetext[1]{%
+  \let\thefootnote\relax\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \let\thefootnote\svthefootnote%
+}
+
+%Overriding the \footnotetext command to hide the marker if its value is `0`
+\let\svfootnotetext\footnotetext
+\renewcommand\footnotetext[2][?]{%
+  \if\relax#1\relax%
+    \ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+  \else%
+    \if?#1\ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+    \else\svfootnotetext[#1]{#2}\fi%
+  \fi
+}
+
+\begin{document}
+\maketitle
+
+
+\section*{Week 2. Problem set}
+\begin{enumerate}
+    \item \textbf{Condition} \\
+    
+    In [Cormen, Section 16.1], a stack with an extra operation Multipop is discussed. What is the total cost of executing $n$ of the stack operations PUSH, POP, and MUlTIPOP, assuming that the stack begins with $k_{0}$ objects and finishes with $k_{n}$ objects? Provide brief justification (1-2 sentences). \\
+    
+    \textbf{Solution} \\
+
+    
+        \(T(n) = push(1) + push(2) + ... + push(k) \\
+               + pop(1) + pop(2) + ... + pop(k) \\
+               + popMany(k) + ... + popMany(k)\)
+
+  \item A sequence of Push, Pop, and SAVE operations is performed on a stack. SAVE operation copies all the elements of the stack that have not been backed up before. To keep track of which elements have a backup, the stack is equipped with a pointer to the most recently pushed element with a backup. PUSH does not affect the pointer, POP only affects the pointer if it pointed to the top element (in this case the pointer will be updated to point to the new top element after POP), and SAVE copies all elements from the pointer to the top of the stack and updates the pointer to point to the top.
+
+\end{enumerate}
+
+Perform amortised time complexity analysis using the accounting method for a sequence of PUSH, POP, and SAVE operations performed on an initially empty stack:
+
+(a) Specify actual cost, amortized cost, and accumulated credit for each operation. Assume that $n_{i}$ is the size of stack before operation and $k_{i}$ is number of backed up elements in the stack.
+
+\begin{center}
+\begin{tabular}{|c||c|c|c|}
+\hline
+operation & actual cost & amortized cost & credit \\
+\hline\hline
+PUSH &  &  &  \\
+\hline
+POP &  &  &  \\
+\hline
+SAVE &  &  &  \\
+\hline
+\end{tabular}
+\end{center}
+
+(b) Show that the total amortized cost of a sequence of $n$ operations provides an upper bound on the total actual cost of the sequence.
+
+(c) Write down the asymptotic complexity for a sequence of $n$ operations.
+
+\section*{References}
+[Cormen] T. H. Cormen, C. E. Leiserson, R. L. Rivest and C. Stein. Introduction to Algorithms, Fourth Edition. The MIT Press 2022
+\footnotetext{${ }^{1}$ Hint: take inspiration in the potential function for incrementing a binary counter example [Cormen, Section 16.3]; for each element in the collection there should be enough potential for all future merge events for this element.
+}
+
+\end{document}

@@ -1,0 +1,116 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+
+\title{Data Structures and Algorithms Spring 2024 - Problem Sets }
+
+
+\author{by Nikolai Kudasov}
+
+
+
+%New command to display footnote whose markers will always be hidden
+\let\svthefootnote\thefootnote
+\newcommand\blfootnotetext[1]{%
+  \let\thefootnote\relax\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \let\thefootnote\svthefootnote%
+}
+
+%Overriding the \footnotetext command to hide the marker if its value is `0`
+\let\svfootnotetext\footnotetext
+\renewcommand\footnotetext[2][?]{%
+  \if\relax#1\relax%
+    \ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+  \else%
+    \if?#1\ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+    \else\svfootnotetext[#1]{#2}\fi%
+  \fi
+}
+
+\begin{document}
+\maketitle
+
+
+\section*{Week 2. Problem set}
+\begin{enumerate}
+  \item In [Cormen, Section 16.1], a stack with an extra operation Multipop is discussed. What is the total cost of executing $n$ of the stack operations PUSH, POP, and MUltiPOP, assuming that the stack begins with $k_{0}$ objects and finishes with $k_{n}$ objects? Provide brief justification (1-2 sentences).
+
+  \item A sequence of Push, Pop, and SAVE operations is performed on a stack. SAVE operation copies all the elements of the stack that have not been backed up before. To keep track of which elements have a backup, the stack is equipped with a pointer to the most recently pushed element with a backup. PUSH does not affect the pointer, POP only affects the pointer if it pointed to the top element (in this case the pointer will be updated to point to the new top element after POP), and SAVE copies all elements from the pointer to the top of the stack and updates the pointer to point to the top.
+
+\end{enumerate}
+
+Perform amortised time complexity analysis using the accounting method for a sequence of PUSH, POP, and SAVE operations performed on an initially empty stack:
+
+(a) Specify actual cost, amortized cost, and accumulated credit for each operation. Assume that $n_{i}$ is the size of stack before operation and $k_{i}$ is number of backed up elements in the stack.
+
+\begin{center}
+\begin{tabular}{|c||c|c|c|}
+\hline
+operation & actual cost & amortized cost & credit \\
+\hline\hline
+PUSH &  &  &  \\
+\hline
+POP &  &  &  \\
+\hline
+SAVE &  &  &  \\
+\hline
+\end{tabular}
+\end{center}
+
+(b) Show that the total amortized cost of a sequence of $n$ operations provides an upper bound on the total actual cost of the sequence.
+
+(c) Write down the asymptotic complexity for a sequence of $n$ operations.
+
+\begin{enumerate}
+  \setcounter{enumi}{2}
+  \item ( $+\mathbf{1 \%}$ extra credit) A sorted collection of $n$ integers is represented by a linked list of $k$ sorted arrays. The arrays are of sizes $2^{b_{0}}, 2^{b_{1}}, \ldots, 2^{b_{k}}$, such that $b_{0}<b_{1}<\ldots<b_{k}$.
+\end{enumerate}
+
+To ADD an integer $i$ in a sorted collection, we add a singleton array with $i$ to the beginning of the list of arrays. Then, to ensure the invariant, we resize the arrays: going from smaller arrays to larger, if two smallest arrays have the same size, we MERGE them (using linear time merging as in MERGE-SORT) and repeat the process until the smallest array is unique.
+
+For example,
+
+\begin{itemize}
+  \item a collection $\{1,2,3,4,5,8,9,10,11,12\}$ can be represented by a list of three arrays:
+\end{itemize}
+
+$$
+2 \rightarrow 1,3 \rightarrow 4,5,6,8,9,10,11,12
+$$
+
+\begin{itemize}
+  \item inserting 7 in this collection, we first add a singleton array $7 \rightarrow 2 \rightarrow 1,3 \rightarrow 4,5,6,8,9,10,11,12$
+  \item then, since we have two arrays of size 1 , we MERGE them $2,7 \rightarrow 1,3 \rightarrow 4,5,6,8,9,10,11,12$
+  \item then, since we have two arrays of size 2, we MERGE them $1,2,3,7 \rightarrow 4,5,6,8,9,10,11,12$
+  \item now, since we have only one array of the smallest size, we stop.
+\end{itemize}
+
+Perform amortised time complexity analysis using the potential method for a sequence of $n$ ADD operations performed on an initially empty sorted collection:
+
+(a) Define the potential function $\Phi$ on a sorted collection ${ }^{1}$; the potential function may depend on the number $n$ of operations in the sequence;
+
+(b) Compute the value of the potential function for the following sorted collection:
+
+$$
+D=2 \rightarrow 1,3 \rightarrow 4,5,6,8,9,10,11,12
+$$
+
+(c) Compute $\Phi\left(D_{i}\right)-\Phi\left(D_{i-1}\right)$
+
+(d) Compute amortized cost for ADD using your potential function;
+
+(e) Write down amortized asymptotic complexity for ADD.
+
+\section*{References}
+[Cormen] T. H. Cormen, C. E. Leiserson, R. L. Rivest and C. Stein. Introduction to Algorithms, Fourth Edition. The MIT Press 2022
+\footnotetext{${ }^{1}$ Hint: take inspiration in the potential function for incrementing a binary counter example [Cormen, Section 16.3]; for each element in the collection there should be enough potential for all future merge events for this element.
+}
+
+
+\end{document}
