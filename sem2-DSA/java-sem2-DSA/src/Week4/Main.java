@@ -1,4 +1,4 @@
-package Week4.Ex1;
+package Week4;
 // Maksim Al Dandan
 
 import java.util.*;

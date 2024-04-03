@@ -1,5 +1,5 @@
 // Maksim Al Dandan
-package Week7.Ex1;
+package Week7;
 
 import java.io.BufferedReader;
 import java.io.IOException;
