@@ -7,5 +7,6 @@
         "*.asm": "riscv",
         "*.latex": "latex",
         "iostream": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": true
 }
