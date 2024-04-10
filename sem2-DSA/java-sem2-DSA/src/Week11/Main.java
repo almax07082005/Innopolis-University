@@ -1,7 +1,12 @@
 // Maksim Al Dandan
 package Week11;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -57,7 +62,7 @@ public class Main {
         }
     }
 
-// Taken from lab 10
+    // Taken from lab 10
     static class Graph<V, E> {
 
         class Vertex {
