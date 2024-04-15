@@ -33,7 +33,13 @@ public class Account {
     }
 
     public void showInformation() {
-        System.out.printf("%s'Account: Type: %s, Balance: %f, State: %s, Transactions: %s.%n", name, type, balance, state, transactionEvents);
+        System.out.printf("%s'Account: Type: %s, Balance: $%s, State: %s, Transactions: %s.%n",
+                name,
+                type,
+                BankingSystem.getForMoney().format(balance),
+                state,
+                transactionEvents
+        );
     }
 
     public float getBalance() {

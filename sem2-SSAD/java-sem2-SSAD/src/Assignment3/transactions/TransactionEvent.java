@@ -1,5 +1,7 @@
 package Assignment3.transactions;
 
+import Assignment3.main.BankingSystem;
+
 public class TransactionEvent {
 
     private final TransactionType transactionType;
@@ -12,6 +14,6 @@ public class TransactionEvent {
 
     @Override
     public String toString() {
-        return transactionType.name() + " " + amount;
+        return transactionType.name() + " $" + BankingSystem.getForMoney().format(amount);
     }
 }

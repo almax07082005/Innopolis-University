@@ -1,83 +1,54 @@
 package Assignment3.main;
 
-import Assignment3.exceptions.MainException;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
 
-    private static Map<String, Account> accounts;
-    private static Map<String, Runnable> commandsMap;
     private static Scanner scanner;
+    private static BankingSystem bankingSystem;
 
     private static void initialize() {
-        accounts = new HashMap<>();
-        commandsMap = new HashMap<>();
+        bankingSystem = BankingSystem.getInstance();
         scanner = new Scanner(System.in);
-
-        // TODO initialize this map
-//        commandsMap.put("Create Account");
     }
 
     public static void main(String[] args) {
         initialize();
-        int operationsAmount = scanner.nextInt();
+        int operationsAmount = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < operationsAmount; i++) {
 
             String[] commandsList = scanner.nextLine().split(" ");
+            execute(commandsList);
         }
 
         scanner.close();
     }
 
-    public static void createAccount(String name, AccountType type, float initialDeposit) {
-        accounts.put(name, new Account(name, type, initialDeposit));
-        System.out.printf("A new %s account created for %s with an initial balance of %f.%n", type, name, initialDeposit);
-    }
+    public static void execute(String[] commandsList) {
+        CommandType command = ((commandsList[0] + " " + commandsList[1]).equals(CommandType.CreateAccount.toString()) ? CommandType.CreateAccount : CommandType.valueOf(commandsList[0]));
 
-    public static void deposit(String accountName, float amount) {
-        try {
-            accounts.get(accountName).deposit(amount);
-        } catch (MainException e) {
-            System.out.println(e.getMessage(accountName));
-        }
-    }
-
-    public static void withdraw(String accountName, float amount) {
-        try {
-            accounts.get(accountName).withdraw(amount);
-        } catch (MainException exception) {
-            exception.getMessage(accountName);
-        }
-    }
-
-    public static void transfer(String fromAccountName, String toAccountName, float amount) {
-        try {
-            accounts.get(fromAccountName).transfer(accounts.get(toAccountName), amount);
-        } catch (MainException exception) {
-            exception.getMessage(fromAccountName);
-        }
-    }
-
-    public static void view(String accountName) {
-        accounts.get(accountName).showInformation();
-    }
-
-    public static void deactivate(String accountName) {
-        try {
-            accounts.get(accountName).deactivate();
-        } catch (MainException e) {
-            System.out.println(e.getMessage(accountName));
-        }
-    }
-
-    public static void activate(String accountName) {
-        try {
-            accounts.get(accountName).activate();
-        } catch (MainException e) {
-            System.out.println(e.getMessage(accountName));
+        switch (command) {
+            case CreateAccount:
+                bankingSystem.createAccount(commandsList[3], AccountType.valueOf(commandsList[2]), Float.parseFloat(commandsList[4]));
+                break;
+            case Deposit:
+                bankingSystem.deposit(commandsList[1], Float.parseFloat(commandsList[2]));
+                break;
+            case Withdraw:
+                bankingSystem.withdraw(commandsList[1], Float.parseFloat(commandsList[2]));
+                break;
+            case Transfer:
+                bankingSystem.transfer(commandsList[1], commandsList[2], Float.parseFloat(commandsList[3]));
+                break;
+            case View:
+                bankingSystem.view(commandsList[1]);
+                break;
+            case Deactivate:
+                bankingSystem.deactivate(commandsList[1]);
+                break;
+            case Activate:
+                bankingSystem.activate(commandsList[1]);
+                break;
         }
     }
 }
