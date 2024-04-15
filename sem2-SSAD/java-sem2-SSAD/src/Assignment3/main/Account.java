@@ -17,7 +17,6 @@ public class Account {
 
     private AccountState state;
     private float balance;
-
     private final String name;
     private final AccountType type;
     private final List<TransactionEvent> transactionEvents;
@@ -30,6 +29,10 @@ public class Account {
 
         transactionEvents = new ArrayList<>();
         transactionEvents.add(new TransactionEvent(TransactionType.InitialDeposit, initialDeposit));
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void showInformation() {
@@ -59,12 +62,12 @@ public class Account {
     }
 
     public void activate() throws ActivateActivated {
-        if (isActivated()) throw new ActivateActivated();
+        if (isActivated()) throw new ActivateActivated(name);
         state = new DeactivatedAccountState(this);
     }
 
     public void deactivate() throws DeactivateDeactivated {
-        if (!isActivated()) throw new DeactivateDeactivated();
+        if (!isActivated()) throw new DeactivateDeactivated(name);
         state = new ActivatedAccountState(this);
     }
 
@@ -75,7 +78,7 @@ public class Account {
 
     public void withdraw(float amount) throws InsufficientFunds, OperationsWithDeactivated {
         state.withdraw(amount);
-        transactionEvents.add(new TransactionEvent(TransactionType.Withdrawal, amount));
+        transactionEvents.add(new TransactionEvent(TransactionType.Withdrawal, amount - amount * getFee()));
     }
 
     public void transfer(Account to, float amount) throws OperationsWithDeactivated, InsufficientFunds {

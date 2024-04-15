@@ -11,17 +11,17 @@ public class DeactivatedAccountState extends AccountState {
 
     @Override
     public void deposit(float amount) throws OperationsWithDeactivated {
-        throw new OperationsWithDeactivated();
+        throw new OperationsWithDeactivated(account.getName());
     }
 
     @Override
     public void withdraw(float amount) throws OperationsWithDeactivated {
-        throw new OperationsWithDeactivated();
+        throw new OperationsWithDeactivated(account.getName());
     }
 
     @Override
     public void transfer(Account to, float amount) throws OperationsWithDeactivated {
-        throw new OperationsWithDeactivated();
+        throw new OperationsWithDeactivated(account.getName());
     }
 
     @Override

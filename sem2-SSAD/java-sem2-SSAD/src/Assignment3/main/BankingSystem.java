@@ -1,6 +1,7 @@
 package Assignment3.main;
 
 import Assignment3.exceptions.MainException;
+import Assignment3.exceptions.NonExistentAccount;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -44,74 +45,89 @@ public final class BankingSystem {
         );
     }
 
-    public void deposit(String accountName, float amount) {
+    public void deposit(String accountName, float amount) throws NonExistentAccount {
         Account account = accounts.get(accountName);
+        if (account == null) throw new NonExistentAccount(accountName);
 
         try {
             account.deposit(amount);
             System.out.printf("%s successfully deposited $%s. New Balance: $%s.%n",
                     accountName,
                     getForMoney().format(amount),
-                    getForMoney().format(account.getBalance()));
+                    getForMoney().format(account.getBalance())
+            );
         } catch (MainException e) {
-            System.out.println(e.getMessage(accountName));
+            System.out.println(e.getMessage());
         }
     }
 
-    public void withdraw(String accountName, float amount) {
+    public void withdraw(String accountName, float amount) throws NonExistentAccount {
         Account account = accounts.get(accountName);
+        if (account == null) throw new NonExistentAccount(accountName);
 
         try {
             account.withdraw(amount);
             System.out.printf("%s successfully withdrew $%s. New Balance: $%s. Transaction Fee: $%s (%s%%) in the system.%n",
                     accountName,
-                    getForMoney().format(amount),
+                    getForMoney().format(amount - amount * account.getFee()),
                     getForMoney().format(account.getBalance()),
                     getForMoney().format(amount * account.getFee()),
-                    getForFees().format(account.getFee()));
+                    getForFees().format(account.getFee())
+            );
         } catch (MainException exception) {
-            exception.getMessage(accountName);
+            exception.getMessage();
         }
     }
 
-    public void transfer(String fromAccountName, String toAccountName, float amount) {
+    public void transfer(String fromAccountName, String toAccountName, float amount) throws NonExistentAccount {
         Account fromAccount = accounts.get(fromAccountName);
         Account toAccount = accounts.get(toAccountName);
+        if (fromAccount == null) throw new NonExistentAccount(fromAccountName);
+        if (toAccount == null) throw new NonExistentAccount(toAccountName);
 
         try {
             fromAccount.transfer(toAccount, amount);
             System.out.printf("%s successfully transferred $%s to %s. New Balance: $%s. Transaction Fee: $%s (%s%%) in the system.%n",
                     fromAccountName,
-                    getForMoney().format(amount),
+                    getForMoney().format(amount - amount * fromAccount.getFee()),
                     toAccountName,
                     getForMoney().format(fromAccount.getBalance()),
                     getForMoney().format(amount * fromAccount.getFee()),
                     getForFees().format(fromAccount.getFee())
             );
         } catch (MainException exception) {
-            exception.getMessage(fromAccountName);
+            exception.getMessage();
         }
     }
 
-    public void view(String accountName) {
-        accounts.get(accountName).showInformation();
+    public void view(String accountName) throws NonExistentAccount {
+        Account account = accounts.get(accountName);
+        if (account == null) throw new NonExistentAccount(accountName);
+
+        account.showInformation();
     }
 
-    public void deactivate(String accountName) {
+    public void deactivate(String accountName) throws NonExistentAccount {
+        Account account = accounts.get(accountName);
+        if (account == null) throw new NonExistentAccount(accountName);
+
         try {
-            accounts.get(accountName).deactivate();
+            account.deactivate();
             System.out.printf("%s's account is now deactivated.", accountName);
-        } catch (MainException e) {
-            System.out.println(e.getMessage(accountName));
+        } catch (MainException exception) {
+            System.out.println(exception.getMessage());
         }
     }
 
-    public void activate(String accountName) {
+    public void activate(String accountName) throws NonExistentAccount {
+        Account account = accounts.get(accountName);
+        if (account == null) throw new NonExistentAccount(accountName);
+
         try {
-            accounts.get(accountName).activate();
+            account.activate();
             System.out.printf("%s's account is now activated.", accountName);
-        } catch (MainException e) {
-            System.out.println(e.getMessage(accountName));
+        } catch (MainException exception) {
+            System.out.println(exception.getMessage());
         }
     }
 }

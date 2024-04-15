@@ -12,21 +12,21 @@ public class ActivatedAccountState extends AccountState {
 
     @Override
     public void deposit(float amount) {
-        account.setBalance(account.getBalance() + amount - amount * account.getFee());
+        account.setBalance(account.getBalance() + amount);
     }
 
     @Override
     public void withdraw(float amount) throws InsufficientFunds {
-        float newBalance = account.getBalance() - amount - amount * account.getFee();
-        if (newBalance < 0) throw new InsufficientFunds();
+        float newBalance = account.getBalance() - amount;
+        if (newBalance < 0) throw new InsufficientFunds(account.getName());
         account.setBalance(newBalance);
     }
 
     @Override
     public void transfer(Account to, float amount) throws OperationsWithDeactivated, InsufficientFunds {
-        if (!to.isActivated()) throw new OperationsWithDeactivated();
+        if (!to.isActivated()) throw new OperationsWithDeactivated(account.getName());
         account.withdraw(amount);
-        to.deposit(amount);
+        to.deposit(amount - amount * account.getFee());
     }
 
     @Override

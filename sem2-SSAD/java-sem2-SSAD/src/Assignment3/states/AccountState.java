@@ -15,4 +15,7 @@ public abstract class AccountState {
     public abstract void deposit(float amount) throws OperationsWithDeactivated;
     public abstract void withdraw(float amount) throws OperationsWithDeactivated, InsufficientFunds;
     public abstract void transfer(Account to, float amount) throws OperationsWithDeactivated, InsufficientFunds;
+
+    @Override
+    public abstract String toString();
 }

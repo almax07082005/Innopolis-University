@@ -1,5 +1,13 @@
 package Assignment3.exceptions;
 
-public abstract class MainException extends Throwable {
-    public abstract String getMessage(String accountName);
+public abstract class MainException extends Exception {
+
+    protected final String accountName;
+
+    public MainException(String accountName) {
+        this.accountName = accountName;
+    }
+
+    @Override
+    public abstract String getMessage();
 }
