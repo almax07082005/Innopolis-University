@@ -28,4 +28,9 @@ public class ActivatedAccountState extends AccountState {
         account.withdraw(amount);
         to.deposit(amount);
     }
+
+    @Override
+    public String toString() {
+        return "Active";
+    }
 }

@@ -23,4 +23,9 @@ public class DeactivatedAccountState extends AccountState {
     public void transfer(Account to, float amount) throws OperationsWithDeactivated {
         throw new OperationsWithDeactivated();
     }
+
+    @Override
+    public String toString() {
+        return "Inactive";
+    }
 }
