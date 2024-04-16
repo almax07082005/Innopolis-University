@@ -63,12 +63,12 @@ public class Account {
 
     public void activate() throws ActivateActivated {
         if (isActivated()) throw new ActivateActivated(name);
-        state = new DeactivatedAccountState(this);
+        state = new ActivatedAccountState(this);
     }
 
     public void deactivate() throws DeactivateDeactivated {
         if (!isActivated()) throw new DeactivateDeactivated(name);
-        state = new ActivatedAccountState(this);
+        state = new DeactivatedAccountState(this);
     }
 
     public void deposit(float amount) throws OperationsWithDeactivated {
@@ -78,7 +78,7 @@ public class Account {
 
     public void withdraw(float amount) throws InsufficientFunds, OperationsWithDeactivated {
         state.withdraw(amount);
-        transactionEvents.add(new TransactionEvent(TransactionType.Withdrawal, amount - amount * getFee()));
+        transactionEvents.add(new TransactionEvent(TransactionType.Withdrawal, amount));
     }
 
     public void transfer(Account to, float amount) throws OperationsWithDeactivated, InsufficientFunds {

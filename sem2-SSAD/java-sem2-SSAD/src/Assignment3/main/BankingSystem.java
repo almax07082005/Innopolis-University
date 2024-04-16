@@ -56,8 +56,8 @@ public final class BankingSystem {
                     getForMoney().format(amount),
                     getForMoney().format(account.getBalance())
             );
-        } catch (MainException e) {
-            System.out.println(e.getMessage());
+        } catch (MainException exception) {
+            System.out.println(exception.getMessage());
         }
     }
 
@@ -72,10 +72,10 @@ public final class BankingSystem {
                     getForMoney().format(amount - amount * account.getFee()),
                     getForMoney().format(account.getBalance()),
                     getForMoney().format(amount * account.getFee()),
-                    getForFees().format(account.getFee())
+                    getForFees().format(account.getFee() * 100)
             );
         } catch (MainException exception) {
-            exception.getMessage();
+            System.out.println(exception.getMessage());
         }
     }
 
@@ -93,10 +93,10 @@ public final class BankingSystem {
                     toAccountName,
                     getForMoney().format(fromAccount.getBalance()),
                     getForMoney().format(amount * fromAccount.getFee()),
-                    getForFees().format(fromAccount.getFee())
+                    getForFees().format(fromAccount.getFee() * 100)
             );
         } catch (MainException exception) {
-            exception.getMessage();
+            System.out.println(exception.getMessage());
         }
     }
 
@@ -113,7 +113,7 @@ public final class BankingSystem {
 
         try {
             account.deactivate();
-            System.out.printf("%s's account is now deactivated.", accountName);
+            System.out.printf("%s's account is now deactivated.%n", accountName);
         } catch (MainException exception) {
             System.out.println(exception.getMessage());
         }
@@ -125,7 +125,7 @@ public final class BankingSystem {
 
         try {
             account.activate();
-            System.out.printf("%s's account is now activated.", accountName);
+            System.out.printf("%s's account is now activated.%n", accountName);
         } catch (MainException exception) {
             System.out.println(exception.getMessage());
         }

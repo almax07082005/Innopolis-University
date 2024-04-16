@@ -53,8 +53,8 @@ public class Main {
                     bankingSystem.activate(commandsList[1]);
                     break;
             }
-        } catch (NonExistentAccount e) {
-            e.getMessage();
+        } catch (NonExistentAccount exception) {
+            System.out.println(exception.getMessage());
         }
     }
 }
