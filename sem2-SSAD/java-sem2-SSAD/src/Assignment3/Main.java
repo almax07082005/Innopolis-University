@@ -85,7 +85,7 @@ class Account {
     }
 
     public void showInformation() {
-        System.out.printf("%s'Account: Type: %s, Balance: $%s, State: %s, Transactions: %s.%n",
+        System.out.printf("%s's Account: Type: %s, Balance: $%s, State: %s, Transactions: %s.%n",
                 name,
                 type,
                 BankingSystem.getForMoney().format(balance),
@@ -343,9 +343,10 @@ class ActivatedAccountState extends AccountState {
 
     @Override
     public void transfer(Account to, float amount) throws OperationsWithDeactivated, InsufficientFunds {
-        if (!to.isActivated()) throw new OperationsWithDeactivated(account.getName());
         account.withdraw(amount);
-        to.deposit(amount - amount * account.getFee());
+        try {
+            to.deposit(amount - amount * account.getFee());
+        } catch (OperationsWithDeactivated ignored) {}
     }
 
     @Override
@@ -382,10 +383,21 @@ class DeactivatedAccountState extends AccountState {
 }
 
 enum TransactionType {
-    InitialDeposit,
-    Deposit,
-    Withdrawal,
-    Transfer
+    InitialDeposit("Initial Deposit"),
+    Deposit("Deposit"),
+    Withdrawal("Withdrawal"),
+    Transfer("Transfer");
+
+    private final String name;
+
+    TransactionType(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
 
 class TransactionEvent {
@@ -400,7 +412,7 @@ class TransactionEvent {
 
     @Override
     public String toString() {
-        return transactionType.name() + " $" + BankingSystem.getForMoney().format(amount);
+        return transactionType + " $" + BankingSystem.getForMoney().format(amount);
     }
 }
 
