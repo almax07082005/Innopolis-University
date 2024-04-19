@@ -1,6 +1,5 @@
 package Assignment3;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -88,7 +87,7 @@ class Account {
         System.out.printf("%s's Account: Type: %s, Balance: $%s, State: %s, Transactions: %s.%n",
                 name,
                 type,
-                BankingSystem.getForMoney().format(balance),
+                String.format("%.3f", balance),
                 state,
                 transactionEvents
         );
@@ -165,17 +164,6 @@ final class BankingSystem {
     private static BankingSystem bankingSystem;
     private final Map<String, Account> accounts;
 
-    private static final DecimalFormat forMoney = new DecimalFormat("0.000");
-    private static final DecimalFormat forFees = new DecimalFormat("0.0");
-
-    public static DecimalFormat getForMoney() {
-        return forMoney;
-    }
-
-    public static DecimalFormat getForFees() {
-        return forFees;
-    }
-
     private BankingSystem() {
         accounts = new HashMap<>();
     }
@@ -194,7 +182,7 @@ final class BankingSystem {
         System.out.printf("A new %s account created for %s with an initial balance of $%s.%n",
                 type,
                 name,
-                getForMoney().format(initialDeposit)
+                String.format("%.3f", initialDeposit)
         );
     }
 
@@ -206,8 +194,8 @@ final class BankingSystem {
             account.deposit(amount);
             System.out.printf("%s successfully deposited $%s. New Balance: $%s.%n",
                     accountName,
-                    getForMoney().format(amount),
-                    getForMoney().format(account.getBalance())
+                    String.format("%.3f", amount),
+                    String.format("%.3f", account.getBalance())
             );
         } catch (MainException exception) {
             System.out.println(exception.getMessage());
@@ -222,10 +210,10 @@ final class BankingSystem {
             account.withdraw(amount);
             System.out.printf("%s successfully withdrew $%s. New Balance: $%s. Transaction Fee: $%s (%s%%) in the system.%n",
                     accountName,
-                    getForMoney().format(amount - amount * account.getFee()),
-                    getForMoney().format(account.getBalance()),
-                    getForMoney().format(amount * account.getFee()),
-                    getForFees().format(account.getFee() * 100)
+                    String.format("%.3f", amount - amount * account.getFee()),
+                    String.format("%.3f", account.getBalance()),
+                    String.format("%.3f", amount * account.getFee()),
+                    account.getFee() * 100
             );
         } catch (MainException exception) {
             System.out.println(exception.getMessage());
@@ -242,11 +230,11 @@ final class BankingSystem {
             fromAccount.transfer(toAccount, amount);
             System.out.printf("%s successfully transferred $%s to %s. New Balance: $%s. Transaction Fee: $%s (%s%%) in the system.%n",
                     fromAccountName,
-                    getForMoney().format(amount - amount * fromAccount.getFee()),
+                    String.format("%.3f", amount - amount * fromAccount.getFee()),
                     toAccountName,
-                    getForMoney().format(fromAccount.getBalance()),
-                    getForMoney().format(amount * fromAccount.getFee()),
-                    getForFees().format(fromAccount.getFee() * 100)
+                    String.format("%.3f", fromAccount.getBalance()),
+                    String.format("%.3f", amount * fromAccount.getFee()),
+                    fromAccount.getFee() * 100
             );
         } catch (MainException exception) {
             System.out.println(exception.getMessage());
@@ -342,11 +330,12 @@ class ActivatedAccountState extends AccountState {
     }
 
     @Override
-    public void transfer(Account to, float amount) throws OperationsWithDeactivated, InsufficientFunds {
-        account.withdraw(amount);
-        try {
-            to.deposit(amount - amount * account.getFee());
-        } catch (OperationsWithDeactivated ignored) {}
+    public void transfer(Account to, float amount) throws InsufficientFunds {
+        float newBalance = account.getBalance() - amount;
+        if (newBalance < 0) throw new InsufficientFunds(account.getName());
+        account.setBalance(newBalance);
+
+        to.setBalance(to.getBalance() + amount - amount * account.getFee());
     }
 
     @Override
@@ -362,8 +351,8 @@ class DeactivatedAccountState extends AccountState {
     }
 
     @Override
-    public void deposit(float amount) throws OperationsWithDeactivated {
-        throw new OperationsWithDeactivated(account.getName());
+    public void deposit(float amount) {
+        account.setBalance(account.getBalance() + amount);
     }
 
     @Override
@@ -412,7 +401,7 @@ class TransactionEvent {
 
     @Override
     public String toString() {
-        return transactionType + " $" + BankingSystem.getForMoney().format(amount);
+        return transactionType + " $" + String.format("%.3f", amount);
     }
 }
 
