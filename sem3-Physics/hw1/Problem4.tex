@@ -1,0 +1,87 @@
+\section{Problem 4}
+
+\vspace{7mm}
+To find the acceleration of the athlete, we will first determine the distance covered during the acceleration phase and then find the time spent accelerating. Given the total distance and time, as well as the maximum speed, we can use the equations of motion to solve for acceleration. We will solve for the acceleration \(a\) by considering the equations for uniformly accelerated motion and the total distance covered in the race.
+
+\vspace{7mm}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (10,0) node[right] {Time (s)};
+\draw[->] (0,0) -- (0,10) node[above] {Velocity (m/s)};
+\draw[blue, thick] (0,0) -- (5,7) -- (10,7);
+\draw[dashed] (5,0) -- (5,7);
+\draw[dashed] (0,7) -- (5,7);
+\node at (2.5, -1) {Acceleration phase};
+\node at (7.5, -1) {Constant speed phase};
+\node at (6, 7.5) {14 m/s};
+\end{tikzpicture}
+
+\vspace{7mm}
+We start with the following known values:
+\begin{itemize}
+    \item Maximum speed, \( v = 14 \, \text{m/s} \)
+    \item Total distance, \( d = 100 \, \text{m} \)
+    \item Total time, \( t = 11 \, \text{s} \)
+\end{itemize}
+
+Let's denote:
+\begin{itemize}
+    \item Time spent accelerating as \( t_1 \)
+    \item Time spent at maximum speed as \( t_2 \)
+    \item Acceleration as \( a \)
+\end{itemize}
+
+The time \( t_2 \) during which the athlete runs at maximum speed is given by \( t_2 = 11 - t_1 \). 
+
+The distance covered during acceleration (\( d_1 \)) can be calculated using:
+\[
+d_1 = \frac{1}{2} a t_1^2
+\]
+
+The distance covered at constant speed (\( d_2 \)) is:
+\[
+d_2 = v t_2 = 14 (11 - t_1)
+\]
+
+The total distance covered is:
+\[
+d_1 + d_2 = 100
+\]
+\[
+\frac{1}{2} a t_1^2 + 14 (11 - t_1) = 100
+\]
+
+The athlete reaches maximum speed \( v \) after time \( t_1 \):
+\[
+v = a t_1 \implies t_1 = \frac{v}{a} = \frac{14}{a}
+\]
+
+Substitute \( t_1 = \frac{14}{a} \) into the distance equation:
+\[
+\frac{1}{2} a \left(\frac{14}{a}\right)^2 + 14 \left(11 - \frac{14}{a}\right) = 100
+\]
+\[
+\frac{1}{2} \cdot \frac{196}{a} + 154 - \frac{196}{a} = 100
+\]
+\[
+\frac{196}{2a} - \frac{196}{a} = 100 - 154
+\]
+\[
+\frac{196}{2a} - \frac{196}{a} = -54
+\]
+\[
+\frac{196 - 392}{2a} = -54
+\]
+\[
+\frac{-196}{2a} = -54
+\]
+\[
+\frac{196}{2a} = 54
+\]
+\[
+\frac{196}{108} = a
+\]
+\[
+a \approx 1.81 \, \text{m/s}^2
+\]
+
+The acceleration of the athlete is approximately \(\boxed{1.81 \, \text{m/s}^2}\).

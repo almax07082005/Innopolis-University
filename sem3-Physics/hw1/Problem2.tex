@@ -1,0 +1,61 @@
+\section{Problem 2}
+
+To determine the initial speed of a ball thrown horizontally from a height of 20 meters, where the ball hits the ground with a speed three times its initial speed, we will use the principles of projectile motion. Since the horizontal motion is uniform and unaffected by gravity, the initial horizontal velocity \(v_0\) remains constant. The vertical motion is governed by the acceleration due to gravity. By relating the final speed to the initial speed using the Pythagorean theorem, we can solve for \(v_0\).
+
+- The horizontal motion of the ball is described by:
+\[
+v_x = v_0
+\]
+
+- The vertical motion of the ball under gravity can be described by the following equations:
+  \[
+  \text{Displacement: } y = \frac{1}{2} g t^2
+  \]
+  \[
+  \text{Vertical velocity: } v_y = g t
+  \]
+
+The total speed \( v_f \) of the ball when it hits the ground is given by the vector sum of the horizontal and vertical velocities:
+\[
+v_f = \sqrt{v_x^2 + v_y^2}
+\]
+We are given that \( v_f \) is three times the initial horizontal speed:
+\[
+v_f = 3v_0
+\]
+
+Substituting this into the speed equation:
+\[
+3v_0 = \sqrt{v_0^2 + v_y^2}
+\]
+
+Since the vertical velocity just before impact is:
+\[
+v_y = \sqrt{2gh}
+\]
+we can substitute \( v_y \) into the equation:
+\[
+3v_0 = \sqrt{v_0^2 + 2gh}
+\]
+
+Squaring both sides to remove the square root:
+\[
+9v_0^2 = v_0^2 + 2gh
+\]
+Rearranging and solving for \( v_0 \):
+\[
+8v_0^2 = 2gh
+\]
+\[
+v_0^2 = \frac{2gh}{8}
+\]
+\[
+v_0 = \sqrt{\frac{2gh}{8}} = \frac{\sqrt{gh}}{2}
+\]
+
+Substituting \( g = 9.8 \, \text{m/s}^2 \) and \( h = 20 \, \text{m} \):
+\[
+v_0 = \frac{\sqrt{9.8 \times 20}}{2} = \frac{\sqrt{196}}{2} = \frac{14}{2} = 7 \, \text{m/s}
+\]
+
+The initial speed of the ball is \( \boxed{7 \, \text{m/s}} \).
