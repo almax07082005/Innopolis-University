@@ -10,42 +10,26 @@ We denote \( v_r \) as the speed of the river relative to the ground and \( v_b 
 S_{up} = (v_b - v_r) \times 0.5
 \]
 
-The time \( t_1 \) for the fisherman to reach the bridge again is:
+The time \( t_{toBridge} \) for the fisherman to reach the bridge again is:
 
 \[
-t_1 = \frac{(v_b - v_r) \times 0.5}{v_b + v_r}
+t_{toBridge} = \frac{(v_b - v_r) \times 0.5}{v_b + v_r}
 \]
 
-The time \( t_2 \) for the fisherman to reach the bottle from the bridge is:
+The time \( t_{toBottle} \) for the fisherman to reach the bottle from the bridge is:
 
 \[
-t_2 = \frac{5}{v_b + v_r}
+t_{toBottle} = \frac{5}{v_b + v_r}
 \]
 
-The overall time \( t_1 + t_2 \) is equal to:
+The overall time \( t_{toBridge} + t_{toBottle} + t_{fromBridge} \) is:
 
 \[
-t = t_1 + t_2 = \frac{(v_b - v_r) \times 0.5 + 5}{v_b + v_r} = \frac{5}{v_r}
+t = \frac{(v_b - v_r) \times 0.5 + 5}{v_b + v_r} + 0.5 = \frac{5}{v_r}
 \]
 
-Thus, solving this equation:
+By solving that, everything except $v_r$ will be canceled out, so the answer is:
 
 \[
-\frac{(v_b - v_r) \times 0.5 + 5}{v_b + v_r} = \frac{5}{v_r}
-\]
-
-Here is the derived quadratic equation:
-
-\[
-v_r^2 + v_r v_b - 10 v_b = 0
-\]
-
-Let's solve it for \( v_r \):
-
-\[
-D = v_b^2 - 40 v_b
-\]
-
-\[
-v_r = \frac{v_b \pm \sqrt{v_b^2 - 40 v_b}}{2}
+v_r = \boxed{5 \frac{km}{h}}
 \]
