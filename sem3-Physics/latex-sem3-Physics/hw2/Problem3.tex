@@ -1,2 +1,65 @@
 \section{Problem 3}
 
+\textbf{Step 1: Applying Newton's second law}
+
+The equation of motion for the boat is:
+
+\[
+m \frac{dv}{dt} = F_{\text{engine}} - kv
+\]
+
+where:
+\begin{itemize}
+    \item $m = 3000 \, \text{kg}$ (mass of the boat),
+    \item $k = 100 \, \text{kg/s}$ (drag coefficient),
+    \item $F_{\text{engine}}$ is the constant engine force,
+    \item $v(t)$ is the velocity as a function of time.
+\end{itemize}
+
+Rearranging the equation:
+
+\[
+\frac{dv}{dt} + \frac{k}{m}v = \frac{F_{\text{engine}}}{m}
+\]
+
+This is a first-order linear differential equation. \\
+
+\textbf{Step 2: Solving the differential equation}
+
+The solution to this equation is of the form:
+
+\[
+v(t) = V_{\text{max}} \left(1 - e^{-\frac{k}{m} t}\right)
+\]
+
+where $V_{\text{max}} = \frac{F_{\text{engine}}}{k}$ is the maximum velocity the boat can reach when the drag force equals the engine force.
+
+\textbf{Step 3: Determining the engine force}
+
+We know that after $t = 33$ seconds, the velocity is $v(33) = 2 \, \text{m/s}$. Substituting this into the velocity equation:
+
+\[
+2 = V_{\text{max}} \left(1 - e^{-\frac{100}{3000} \times 33}\right)
+\]
+
+Simplifying the exponent:
+
+\[
+2 = V_{\text{max}} \left(1 - e^{-1.1}\right)
+\]
+
+Using $e^{-1.1} \approx 0.3329$:
+
+\[
+2 = V_{\text{max}} \times (1 - 0.3329)
+\]
+
+\[
+2 = V_{\text{max}} \times 0.6671
+\]
+
+Thus,
+
+\[
+V_{\text{max}} = \frac{2}{0.6671} \approx \boxed{2.999 \, \text{m/s}}
+\]
