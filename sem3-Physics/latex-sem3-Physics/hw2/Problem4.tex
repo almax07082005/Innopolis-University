@@ -1,0 +1,66 @@
+\section{Problem 4}
+
+\textbf{Step 1: Forces acting on Block A}
+For Block A, the forces are:
+\[
+W_A = m_A \cdot g
+\]
+where \( W_A \) is the weight and \( T_A \) is the tension in the rope. Since the system is stationary, from Newton's Second Law:
+\[
+T_A = m_A \cdot g \tag{1}
+\]
+
+\textbf{Step 2: Forces acting on Block B}
+For Block B, the horizontal tension \( T_B \) is resisted by the frictional force \( F_f \):
+\[
+T_B = F_f
+\]
+The maximum static friction force is:
+\[
+F_f = \mu_s \cdot N_B = \mu_s \cdot m_B \cdot g \tag{2}
+\]
+Substituting the known values \( \mu_s = 0.25 \), \( m_B = 50 \, \text{kg} \), and \( g = 9.8 \, \text{m/s}^2 \), we get:
+\[
+T_B = 0.25 \cdot 50 \cdot 9.8 = 122.5 \, \text{N} \tag{3}
+\]
+
+\textbf{Step 3: Forces at the Knot}
+At the knot, we have the following equilibrium conditions:
+- Horizontal equilibrium: 
+  \[
+  T_B = T \cos \theta \tag{4}
+  \]
+- Vertical equilibrium:
+  \[
+  T_A = T \sin \theta \tag{5}
+  \]
+  
+\textbf{Step 4: Solving for \( T \)}
+From equation (4), we can express \( T \) as:
+\[
+T = \frac{T_B}{\cos \theta} \tag{6}
+\]
+Substituting equation (3) into equation (6), we get:
+\[
+T = \frac{122.5}{\cos 30^\circ} = \frac{122.5}{0.866} \approx 141.4 \, \text{N} \tag{7}
+\]
+
+\textbf{Step 5: Substitute \( T \) into the Vertical Equilibrium Equation}
+From equation (5):
+\[
+T_A = T \sin \theta
+\]
+Substituting equation (7):
+\[
+T_A = 141.4 \cdot \sin 30^\circ = 141.4 \cdot 0.5 = 70.7 \, \text{N} \tag{8}
+\]
+Using equation (1), we can now solve for \( m_A \):
+\[
+m_A \cdot g = 70.7
+\]
+\[
+m_A = \frac{70.7}{9.8} \approx 7.2 \, \text{kg} \tag{9}
+\]
+
+\textbf{Final Answer:}
+The maximum mass of Block A for which the system remains stationary is \( \boxed{7.2 \, \text{kg}} \).
