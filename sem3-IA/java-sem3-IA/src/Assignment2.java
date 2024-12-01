@@ -23,6 +23,40 @@ interface Mutation {
     void run(Board board, float probability);
 }
 
+/**
+ * The FitnessFunctions interface provides a set of predefined fitness functions
+ * for evaluating the fitness of a board configuration in a puzzle game.
+ * 
+ * <p>
+ * The interface includes a quadratic fitness function that calculates the fitness
+ * of a board based on the number of repeated values in rows, columns, and subgrids.
+ * The fitness value is computed by summing the squares of the differences between
+ * the actual counts and the expected counts of values in each row, column, and subgrid.
+ * </p>
+ * 
+ * <p>
+ * The quadratic fitness function is defined as follows:
+ * <ul>
+ * <li>For each row, the function counts the occurrences of each value and computes
+ * the sum of the squares of the differences between the actual counts and the expected counts.</li>
+ * <li>For each column, the function performs the same computation as for rows.</li>
+ * <li>For each 3x3 subgrid, the function counts the occurrences of each value and computes
+ * the sum of the squares of the differences between the actual counts and the expected counts.</li>
+ * </ul>
+ * The final fitness value is the sum of the fitness values for all rows, columns, and subgrids.
+ * </p>
+ * 
+ * <p>
+ * The fitness function assumes that the board is represented by a {@code Board} object
+ * with a method {@code getCell(int row, int col)} that returns a {@code Cell} object.
+ * The {@code Cell} object has a method {@code getValue()} that returns the value of the cell.
+ * A value of -1 indicates an empty cell.
+ * </p>
+ * 
+ * <p>
+ * The {@code Board.BOARD_SIZE} constant is used to determine the size of the board.
+ * </p>
+ */
 interface FitnessFunctions {
     FitnessFunction quadraticFitnessFunction = board -> {
         Integer fitness = 0;
@@ -72,6 +106,45 @@ interface FitnessFunctions {
     };
 }
 
+/**
+ * The Assignment2 class is the entry point for the application.
+ * It initializes a board and uses an algorithm to solve a problem.
+ * The main method sets up the board and runs the algorithm.
+ * 
+ * <p>Usage:</p>
+ * <pre>
+ * {@code
+ * public static void main(String[] args) {
+ *     Assignment2.main(args);
+ * }}
+ * </pre>
+ * 
+ * <p>Methods:</p>
+ * <ul>
+ *   <li>{@link #main(String[])} - The main method that initializes the board and runs the algorithm.</li>
+ *   <li>{@link #initializeBoard()} - Initializes the board with user input.</li>
+ *   <li>{@link #cloneInitBoard()} - Clones the initial board.</li>
+ * </ul>
+ * 
+ * <p>Dependencies:</p>
+ * <ul>
+ *   <li>{@code Board} - Represents the game board.</li>
+ *   <li>{@code Algorithm} - Represents the algorithm used to solve the problem.</li>
+ *   <li>{@code CleverCrossover} - A crossover strategy for the algorithm.</li>
+ *   <li>{@code CleverMutation} - A mutation strategy for the algorithm.</li>
+ *   <li>{@code FitnessFunctions} - Contains fitness functions for the algorithm.</li>
+ *   <li>{@code CleverInitGeneration} - Initializes the generation for the algorithm.</li>
+ *   <li>{@code Cell} - Represents a cell on the board.</li>
+ *   <li>{@code MutableCell} - Represents a mutable cell on the board.</li>
+ *   <li>{@code ImmutableCell} - Represents an immutable cell on the board.</li>
+ * </ul>
+ * 
+ * <p>Note:</p>
+ * <ul>
+ *   <li>The board size is determined by {@code Board.BOARD_SIZE}.</li>
+ *   <li>User input is required to initialize the board.</li>
+ * </ul>
+ */
 public class Assignment2 {
     private static Board initBoard;
 
@@ -112,6 +185,10 @@ public class Assignment2 {
     }
 }
 
+/**
+ * The Algorithm class implements a genetic algorithm to solve a problem represented by the Board class.
+ * It uses crossover, mutation, and fitness functions to evolve a population of solutions.
+ */
 class Algorithm {
     public static final Random random = new Random();
     private static final int POPULATION_SIZE = 1000;
@@ -184,6 +261,11 @@ class Algorithm {
     }
 }
 
+/**
+ * The CleverInitGeneration class implements the InitGeneration interface and provides
+ * a method to generate initial values for a game board. It assigns random values to 
+ * mutable cells in the board.
+ */
 class CleverInitGeneration implements InitGeneration {
     @Override
     public void generate(Board board) {
@@ -206,6 +288,26 @@ class CleverInitGeneration implements InitGeneration {
     }
 }
 
+/**
+ * The CleverCrossover class implements the Crossover interface and provides
+ * a method to perform a crossover operation on two given boards.
+ * 
+ * <p>The crossover operation creates a new board by combining cells from
+ * two parent boards. For each cell in the new board, it randomly selects
+ * the value from one of the corresponding cells in the parent boards.
+ * 
+ * <p>This class uses the {@link Assignment2#cloneInitBoard()} method to
+ * initialize the new board and the {@link Algorithm#random} instance to
+ * generate random values for the crossover decision.
+ * 
+ * <p>Note: Only mutable cells in the board are considered for crossover.
+ * 
+ * @see Crossover
+ * @see Board
+ * @see MutableCell
+ * @see Assignment2#cloneInitBoard()
+ * @see Algorithm#random
+ */
 class CleverCrossover implements Crossover {
     @Override
     public Board run(Board board1, Board board2) {
@@ -224,6 +326,13 @@ class CleverCrossover implements Crossover {
     }
 }
 
+/**
+ * The CleverMutation class implements the Mutation interface and provides
+ * a specific mutation strategy for a Board. The mutation strategy involves
+ * randomly selecting two cells on the board and swapping their values if
+ * both cells are instances of MutableCell. The mutation process stops after
+ * one successful swap.
+ */
 class CleverMutation implements Mutation {
     @Override
     public void run(Board board, float probability) {
@@ -248,6 +357,27 @@ class CleverMutation implements Mutation {
     }
 }
 
+/**
+ * The RandomInitGeneration class implements the InitGeneration interface
+ * and provides a method to generate a random initial state for a given Board.
+ * 
+ * <p>This class is responsible for initializing the board by setting random values
+ * to the cells that are instances of MutableCell. The values are generated using
+ * a random number generator and are in the range of 1 to 9 inclusive.</p>
+ * 
+ * <p>Usage example:</p>
+ * <pre>
+ * {@code
+ * Board board = new Board();
+ * InitGeneration initGen = new RandomInitGeneration();
+ * initGen.generate(board);
+ * }
+ * </pre>
+ * 
+ * @see InitGeneration
+ * @see Board
+ * @see MutableCell
+ */
 class RandomInitGeneration implements InitGeneration {
     @Override
     public void generate(Board board) {
@@ -259,6 +389,33 @@ class RandomInitGeneration implements InitGeneration {
     }
 }
 
+/**
+ * The SimpleCrossover class implements the Crossover interface and provides
+ * a method to perform a simple crossover operation on two given boards.
+ * 
+ * <p>This class overrides the run method from the Crossover interface to
+ * create a new board by combining cells from two parent boards. The value
+ * of each cell in the new board is randomly selected from the corresponding
+ * cells of the two parent boards.</p>
+ * 
+ * <p>The crossover operation is applied only to mutable cells, which are
+ * instances of the MutableCell class. Immutable cells retain their original
+ * values.</p>
+ * 
+ * <p>Usage example:</p>
+ * <pre>
+ * {@code
+ * Board parent1 = ...; // Initialize parent board 1
+ * Board parent2 = ...; // Initialize parent board 2
+ * SimpleCrossover crossover = new SimpleCrossover();
+ * Board offspring = crossover.run(parent1, parent2);
+ * }
+ * </pre>
+ * 
+ * @see Crossover
+ * @see Board
+ * @see MutableCell
+ */
 class SimpleCrossover implements Crossover {
     @Override
     public Board run(Board board1, Board board2) {
@@ -277,6 +434,11 @@ class SimpleCrossover implements Crossover {
     }
 }
 
+/**
+ * The SimpleMutation class implements the Mutation interface and provides
+ * a method to perform mutation on a given Board object. The mutation is
+ * applied to cells of the board based on a specified probability.
+ */
 class SimpleMutation implements Mutation {
     @Override
     public void run(Board board, float probability) {
@@ -288,6 +450,14 @@ class SimpleMutation implements Mutation {
     }
 }
 
+/**
+ * The {@code Board} class represents a 9x9 board consisting of cells.
+ * It provides methods to clone the board, execute operations on each cell,
+ * and retrieve the board or specific cells.
+ * <p>
+ * This class implements the {@code Cloneable} interface to allow cloning of the board.
+ * </p>
+ */
 class Board implements Cloneable {
     public static final int BOARD_SIZE = 9;
     private final List<List<Cell>> board;
@@ -332,6 +502,10 @@ class Board implements Cloneable {
     }
 }
 
+/**
+ * The MutableCell class represents a cell in a grid that can have its value changed.
+ * It extends the Cell class and adds a mutable value property.
+ */
 class MutableCell extends Cell {
     private int value;
 
@@ -349,6 +523,16 @@ class MutableCell extends Cell {
     }
 }
 
+/**
+ * The {@code ImmutableCell} class represents a cell in a grid that has an immutable value.
+ * This class extends the {@code Cell} class and adds a final value that cannot be changed
+ * once the cell is created.
+ * <p>
+ * Instances of this class are immutable and thread-safe.
+ * </p>
+ * 
+ * @see Cell
+ */
 class ImmutableCell extends Cell {
     private final int value;
 
@@ -362,6 +546,11 @@ class ImmutableCell extends Cell {
     }
 }
 
+/**
+ * The {@code Cell} class represents an abstract cell with a specific row and column.
+ * This class is intended to be extended by other classes that will provide specific
+ * implementations for the {@code getValue} method.
+ */
 abstract class Cell {
     private final int row;
     private final int col;
